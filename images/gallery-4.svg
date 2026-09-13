@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2540" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grad)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
+  
+  <!-- Decorative Circles -->
+  <circle cx="700" cy="100" r="160" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="100" cy="500" r="200" fill="rgba(255,255,255,0.03)"/>
+  
+  <!-- Icon Graphics -->
+  <g transform="translate(360, 180)" fill="rgba(255,255,255,0.9)">
+    <circle cx="40" cy="40" r="45" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+    <path d="M28 42 L36 50 L52 30" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Sparkles -->
+  <path d="M310 160 L315 175 L330 180 L315 185 L310 200 L305 185 L290 180 L305 175 Z" fill="#ffffff" opacity="0.6"/>
+  <path d="M480 230 L483 240 L493 243 L483 246 L480 256 L477 246 L467 243 L477 240 Z" fill="#ffffff" opacity="0.5"/>
+
+  <!-- Text -->
+  <text x="400" y="320" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="rgba(255,255,255,0.75)" letter-spacing="3" text-anchor="middle">HIGH-RISE FACILITY CARE</text>
+  <text x="400" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" fill="#ffffff" text-anchor="middle">Class-A Lobby High-Rise Glass & Marble</text>
+  <text x="400" y="410" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="rgba(255,255,255,0.6)" text-anchor="middle">Northern Illinois Cleaning Services LLC • Photo Placeholder</text>
+</svg>

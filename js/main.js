@@ -304,6 +304,64 @@ document.addEventListener('DOMContentLoaded', () => {
     // Continuous looping timer
     cycleTimer = setInterval(nextVideo, clipDuration);
   }
+
+  // 8. Premium Parallax Subimages Effect (Multi-Plane Slower Scroll)
+  const subimageCards = document.querySelectorAll('.service-subimage-card');
+
+  if (subimageCards.length > 0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let ticking = false;
+
+    // Track visible cards via IntersectionObserver for maximum 60/120fps performance
+    const visibleCards = new Set();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          visibleCards.add(entry.target);
+        } else {
+          visibleCards.delete(entry.target);
+        }
+      });
+      requestUpdate();
+    }, {
+      rootMargin: '120px 0px 120px 0px'
+    });
+
+    subimageCards.forEach(card => observer.observe(card));
+
+    function updateParallax() {
+      const windowHeight = window.innerHeight;
+      const viewportCenter = windowHeight / 2;
+
+      visibleCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        // Distance from card center to viewport center
+        const cardCenter = rect.top + rect.height / 2;
+        const delta = cardCenter - viewportCenter;
+
+        // Individual speed multiplier from data attribute (e.g. 0.13 - 0.18)
+        const speed = parseFloat(card.dataset.parallaxSpeed) || 0.15;
+
+        // Bound translation between -22px and +22px for sleek optical lag
+        const maxTranslate = 22;
+        const translateY = Math.max(-maxTranslate, Math.min(maxTranslate, delta * speed));
+
+        card.style.setProperty('--subimage-y', `${translateY.toFixed(1)}px`);
+      });
+
+      ticking = false;
+    }
+
+    function requestUpdate() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate, { passive: true });
+    requestUpdate();
+  }
 });
 
 

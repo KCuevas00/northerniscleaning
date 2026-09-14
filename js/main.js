@@ -25,29 +25,68 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Close menu when clicking outside or on a link
+    // Close menu when clicking outside or on a nav link
     document.addEventListener('click', (e) => {
       if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMobileMenu();
+      }
+    });
+
+    function closeMobileMenu() {
+      if (navLinks.classList.contains('active')) {
         navLinks.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
         const icon = mobileToggle.querySelector('i');
         if (icon) {
           icon.classList.remove('fa-xmark');
           icon.classList.add('fa-bars');
         }
       }
-    });
+    }
   }
 
-  // 2. Sticky Header Shadow on Scroll
+  // 2. Transparent-to-Solid Navbar on Scroll
   const header = document.querySelector('.site-header');
+  let ticking = false;
+
+  function updateNavbarScroll() {
+    if (!header) return;
+    const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollPos > 20) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateNavbarScroll);
+      ticking = true;
+    }
+  }
+
   if (header) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
+    // Initial evaluation immediately on DOM ready
+    updateNavbarScroll();
+
+    // High performance passive scroll listener
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    window.addEventListener('pageshow', updateNavbarScroll);
   }
 
   // 3. Gallery Category Filter

@@ -1366,38 +1366,285 @@ textarea.form-control {
   color: var(--primary-blue);
 }
 
-.coverage-box {
-  background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-dark) 100%);
-  color: #ffffff;
+/* ==========================================================================
+   HOURS & SERVICE AREA - MODERN REDESIGN
+   ========================================================================== */
+/* Hours Schedule Grid */
+.hours-schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.schedule-card {
+  background: #ffffff;
   border-radius: var(--radius-xl);
-  padding: 2rem;
-}
-
-.coverage-box h4 {
-  color: #ffffff;
-  font-size: 1.15rem;
-  margin-bottom: 0.5rem;
-}
-
-.coverage-box p {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
-}
-
-.coverage-tags {
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  padding: 2.25rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.schedule-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(0, 136, 204, 0.35);
+}
+
+.schedule-card.highlight {
+  border-color: rgba(0, 164, 228, 0.35);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbfe 100%);
+}
+
+.schedule-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.schedule-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--brand-green-light);
+  color: var(--brand-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.schedule-icon-wrap.commercial {
+  background: var(--accent-light);
+  color: var(--primary-blue);
+}
+
+.schedule-title-area h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.2rem;
+  color: var(--primary-deep);
+}
+
+.schedule-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.schedule-time-box {
+  background: #f8fafc;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #e2e8f0;
+}
+
+.schedule-days {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+
+.schedule-hours-val {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--primary-deep);
+}
+
+.schedule-card p.schedule-desc {
+  color: var(--text-muted);
+  font-size: 0.925rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.schedule-card ul.schedule-perks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
 }
 
-.coverage-tag {
-  background-color: rgba(255, 255, 255, 0.12);
+.schedule-card ul.schedule-perks li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.schedule-card ul.schedule-perks li i {
+  color: var(--brand-green);
+  font-size: 0.8rem;
+}
+
+/* Service Area Coverage Hub */
+.coverage-hub {
+  background: linear-gradient(135deg, var(--primary-deep) 0%, #061c32 100%);
+  border-radius: var(--radius-2xl, 24px);
+  padding: 3.5rem 3.25rem;
   color: #ffffff;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.coverage-hub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.coverage-info h2 {
+  color: #ffffff;
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.coverage-info p.coverage-lead {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+
+.coverage-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.coverage-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.coverage-highlight-item i {
+  color: #72d4ff;
+  font-size: 1.1rem;
+  width: 22px;
+  text-align: center;
+}
+
+.coverage-ctas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Coverage Towns Showcase */
+.coverage-towns-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-xl);
+  padding: 2rem 2.25rem;
+}
+
+.coverage-towns-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.coverage-towns-header h4 {
+  color: #ffffff;
+  font-size: 1.15rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.coverage-towns-header h4 i {
+  color: #72d4ff;
+}
+
+.coverage-radius-pill {
+  background: rgba(110, 168, 36, 0.22);
+  color: #9ee344;
+  border: 1px solid rgba(110, 168, 36, 0.4);
   font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.town-pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.5rem;
+}
+
+.town-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 0.825rem;
   font-weight: 600;
-  padding: 0.3rem 0.65rem;
-  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+}
+
+.town-pill:hover {
+  background: rgba(0, 164, 228, 0.25);
+  border-color: #72d4ff;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.coverage-note-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.coverage-note-bar a {
+  color: #72d4ff;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.coverage-note-bar a:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 /* ==========================================================================
@@ -1833,6 +2080,31 @@ textarea.form-control {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
+  }
+
+  /* Hours & Coverage Responsive */
+  .hours-schedule-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .coverage-hub {
+    padding: 2.5rem 1.75rem;
+  }
+
+  .coverage-hub-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .coverage-towns-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .coverage-note-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 }
 

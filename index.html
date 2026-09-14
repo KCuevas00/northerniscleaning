@@ -58,67 +58,27 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-glow-1"></div>
-    <div class="hero-glow-2"></div>
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <span class="badge badge-white">
-          <i class="fa-solid fa-sparkles"></i> Todo Tipo de Limpieza en General
-        </span>
-        <h1>Commercial &amp; Residential Cleaning <span class="text-highlight">You Can Trust</span></h1>
-        <p class="hero-lead">
-          From houses and apartments to commercial offices and workspaces. We offer regular maintenance, deep cleaning, and move-in/move-out services throughout DeKalb and surrounding areas.
-        </p>
-        <div class="hero-cta-group">
-          <a href="tel:8159013568" class="btn btn-green">
-            <i class="fa-solid fa-phone"></i> Call or Text (815) 901-3568
-          </a>
-          <a href="contact.html" class="btn btn-outline">
-            <i class="fa-solid fa-paper-plane"></i> Get a Free Estimate
-          </a>
-        </div>
-        <div class="hero-trust-badges">
-          <div class="trust-item">
-            <i class="fa-solid fa-calculator trust-icon"></i>
-            <div class="trust-text">
-              <strong>Free Estimates</strong>
-              <span>Fast &amp; Transparent</span>
-            </div>
-          </div>
-          <div class="trust-item">
-            <i class="fa-solid fa-calendar-days trust-icon"></i>
-            <div class="trust-text">
-              <strong>Flexible Schedules</strong>
-              <span>Daily • Weekly • Monthly</span>
-            </div>
-          </div>
-          <div class="trust-item">
-            <i class="fa-solid fa-shield-check trust-icon"></i>
-            <div class="trust-text">
-              <strong>Quality Guaranteed</strong>
-              <span>Commercial &amp; Residential</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-image-card">
-          <img src="images/hero-commercial.svg" alt="Northern Illinois Cleaning Services" width="800" height="600">
-          <div class="hero-floating-badge">
-            <div class="floating-icon">
-              <i class="fa-solid fa-star"></i>
-            </div>
-            <div class="floating-text">
-              <strong>Serving DeKalb + 30 Miles</strong>
-              <span>Call / Text: (815) 901-3568</span>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- Hero Section (Cinematic Background Video with Pure Text Focus) -->
+  <section class="hero-video-section">
+    <!-- Background Video Container -->
+    <div class="hero-video-wrap">
+      <video id="heroVideoA" class="hero-video-element active" autoplay muted playsinline src="videos/bathroom-surface-cleaning.mp4"></video>
+      <video id="heroVideoB" class="hero-video-element" muted playsinline></video>
+      <div class="hero-video-overlay"></div>
     </div>
+
+    <!-- Hero Content: Text Only -->
+    <div class="hero-video-content">
+      <h1 class="hero-giant-title">
+        Commercial &amp; Residential Cleaning
+        <span class="text-highlight">You Can Trust</span>
+      </h1>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <a href="#services" class="hero-scroll-down" aria-label="Scroll to services">
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
   </section>
 
   <!-- Quick Info Bar (Hours & Free Estimates) -->
@@ -134,10 +94,6 @@
           <div class="stat-label">Residential Hours (Mon–Fri)</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">Anytime</div>
-          <div class="stat-label">Commercial Hours (Mon–Fri)</div>
-        </div>
-        <div class="stat-item">
           <div class="stat-number">30 Miles</div>
           <div class="stat-label">Radius Around DeKalb, IL</div>
         </div>
@@ -149,7 +105,7 @@
   <section id="services" class="section section-light">
     <div class="container">
       <div class="section-header">
-        <span class="badge badge-cyan">Todo Tipo de Limpieza</span>
+        <span class="badge badge-cyan">Full-Service Cleaning</span>
         <h2>Our Cleaning Services</h2>
         <p>Complete residential and commercial cleaning customized for homes, apartments, and businesses.</p>
       </div>
@@ -158,7 +114,7 @@
         <!-- Service 1: Residential -->
         <div class="service-card">
           <div class="service-thumb">
-            <img src="images/gallery-2.svg" alt="Houses and Apartments Cleaning">
+            <img src="images/service-houses-apartments.jpg" alt="Houses and Apartments Cleaning" loading="lazy">
             <div class="service-icon-floating">
               <i class="fa-solid fa-house"></i>
             </div>
@@ -178,7 +134,7 @@
         <!-- Service 2: Commercial & Offices -->
         <div class="service-card">
           <div class="service-thumb">
-            <img src="images/office-cleaning.svg" alt="Offices & Commercial Cleaning">
+            <img src="images/service-commercial-offices.jpg" alt="Offices &amp; Commercial Cleaning" loading="lazy">
             <div class="service-icon-floating">
               <i class="fa-solid fa-building"></i>
             </div>
@@ -198,7 +154,7 @@
         <!-- Service 3: Regular Cleaning -->
         <div class="service-card">
           <div class="service-thumb">
-            <img src="images/gallery-1.svg" alt="Regular Cleaning">
+            <img src="images/service-regular-cleaning.jpg" alt="Regular Maintenance Cleaning" loading="lazy">
             <div class="service-icon-floating">
               <i class="fa-solid fa-calendar-check"></i>
             </div>
@@ -218,7 +174,7 @@
         <!-- Service 4: Deep Cleaning -->
         <div class="service-card">
           <div class="service-thumb">
-            <img src="images/disinfection.svg" alt="Deep Cleaning">
+            <img src="images/service-deep-cleaning.jpg" alt="Deep Cleaning" loading="lazy">
             <div class="service-icon-floating">
               <i class="fa-solid fa-spray-can-sparkles"></i>
             </div>
@@ -238,7 +194,7 @@
         <!-- Service 5: Move In / Move Out -->
         <div class="service-card">
           <div class="service-thumb">
-            <img src="images/post-construction.svg" alt="Move In / Move Out Cleaning">
+            <img src="images/service-move-in-out.jpg" alt="Move In / Move Out Cleaning" loading="lazy">
             <div class="service-icon-floating">
               <i class="fa-solid fa-truck-ramp-box"></i>
             </div>
@@ -258,7 +214,7 @@
         <!-- Service 6: Floor Care -->
         <div class="service-card">
           <div class="service-thumb">
-            <img src="images/floor-care.svg" alt="Floor Care and Carpet Cleaning">
+            <img src="images/service-floor-care.jpg" alt="Floor Care and Carpet Cleaning" loading="lazy">
             <div class="service-icon-floating">
               <i class="fa-solid fa-wand-magic-sparkles"></i>
             </div>
@@ -269,7 +225,7 @@
             <ul class="service-features">
               <li><i class="fa-solid fa-check"></i> Hardwood, tile &amp; vinyl floor care</li>
               <li><i class="fa-solid fa-check"></i> Carpet vacuuming &amp; spot treatment</li>
-              <li><i class="fa-solid fa-check"></i> Todo tipo de limpieza en general</li>
+              <li><i class="fa-solid fa-check"></i> Complete general cleaning services</li>
             </ul>
             <a href="tel:8159013568" class="service-link">Call / Text for Free Estimate <i class="fa-solid fa-arrow-right"></i></a>
           </div>

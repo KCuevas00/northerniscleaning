@@ -220,5 +220,90 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1000);
     });
   }
+
+  // 7. Continuous Looping Video Hero Playlist with Smooth Cross-Fade
+  const videoA = document.getElementById('heroVideoA');
+  const videoB = document.getElementById('heroVideoB');
+
+  if (videoA && videoB) {
+    const playlist = [
+      'videos/bathroom-surface-cleaning.mp4',
+      'videos/spraying-wiping-surface.mp4',
+      'videos/disinfecting-door-handle.mp4',
+      'videos/steam-cleaning-surface.mp4'
+    ];
+    let currentIndex = 0;
+    let activePlayer = videoA;
+    let idlePlayer = videoB;
+    let isTransitioning = false;
+    let cycleTimer = null;
+    const clipDuration = 5500; // 5.5 seconds per clip before cross-fading
+
+    function playVideo(video) {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          // Autoplay unlock on first user click or touch
+          const unlockAutoplay = () => {
+            activePlayer.play();
+            document.removeEventListener('touchstart', unlockAutoplay);
+            document.removeEventListener('click', unlockAutoplay);
+          };
+          document.addEventListener('touchstart', unlockAutoplay, { once: true });
+          document.addEventListener('click', unlockAutoplay, { once: true });
+        });
+      }
+    }
+
+    // Start playing video A immediately
+    playVideo(videoA);
+
+    function nextVideo() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      currentIndex = (currentIndex + 1) % playlist.length;
+      const nextSrc = playlist[currentIndex];
+
+      idlePlayer.src = nextSrc;
+      idlePlayer.currentTime = 0;
+      idlePlayer.load();
+
+      const onPlaying = () => {
+        idlePlayer.removeEventListener('playing', onPlaying);
+
+        // Idle player is actively rendering frames - trigger smooth 1.2s cross-dissolve
+        idlePlayer.classList.add('active');
+        activePlayer.classList.remove('active');
+
+        setTimeout(() => {
+          activePlayer.pause();
+          const temp = activePlayer;
+          activePlayer = idlePlayer;
+          idlePlayer = temp;
+          isTransitioning = false;
+        }, 1250);
+      };
+
+      idlePlayer.addEventListener('playing', onPlaying, { once: true });
+
+      const p = idlePlayer.play();
+      if (p !== undefined) {
+        p.catch(err => {
+          console.warn('Video transition playback error, retrying:', err);
+          isTransitioning = false;
+          setTimeout(nextVideo, 1000);
+        });
+      }
+    }
+
+    // Advance when clip naturally ends OR after clipDuration
+    videoA.addEventListener('ended', nextVideo);
+    videoB.addEventListener('ended', nextVideo);
+
+    // Continuous looping timer
+    cycleTimer = setInterval(nextVideo, clipDuration);
+  }
 });
+
 

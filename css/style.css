@@ -289,9 +289,10 @@ ul {
               box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Scrolled State: Solid White Frosted Glass */
-.site-header.scrolled {
-  background-color: rgba(255, 255, 255, 0.97);
+/* Scrolled State & Mobile Menu Open State: Solid White Frosted Glass */
+.site-header.scrolled,
+.site-header.menu-open {
+  background-color: rgba(255, 255, 255, 0.98) !important;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.9);
@@ -348,7 +349,8 @@ ul {
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.site-header.scrolled .logo-title {
+.site-header.scrolled .logo-title,
+.site-header.menu-open .logo-title {
   color: var(--primary-blue);
   text-shadow: none;
 }
@@ -363,7 +365,8 @@ ul {
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.site-header.scrolled .logo-subtitle {
+.site-header.scrolled .logo-subtitle,
+.site-header.menu-open .logo-subtitle {
   color: var(--brand-green);
   text-shadow: none;
 }
@@ -449,7 +452,8 @@ ul {
   transition: color 0.3s ease;
 }
 
-.site-header.scrolled .mobile-toggle {
+.site-header.scrolled .mobile-toggle,
+.site-header.menu-open .mobile-toggle {
   color: var(--primary-deep);
 }
 
@@ -1367,262 +1371,677 @@ textarea.form-control {
 }
 
 /* ==========================================================================
-   HOURS & SERVICE AREA - MODERN REDESIGN
+   EDITORIAL MODERNIST - SCHEDULE & TERRITORY
    ========================================================================== */
-/* Hours Schedule Grid */
-.hours-schedule-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.75rem;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.schedule-card {
-  background: #ffffff;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-  padding: 2.25rem;
-  display: flex;
-  flex-direction: column;
+.editorial-territory-section {
   position: relative;
+  background-color: #f8fbfe;
+  background-image: 
+    radial-gradient(rgba(0, 102, 178, 0.06) 1.2px, transparent 1.2px),
+    linear-gradient(180deg, #f8fbfe 0%, #edf4f9 100%);
+  background-size: 28px 28px, 100% 100%;
+  padding: 6rem 0;
   overflow: hidden;
-  transition: var(--transition);
+  border-top: 1px solid rgba(0, 102, 178, 0.08);
+  border-bottom: 1px solid rgba(0, 102, 178, 0.08);
 }
 
-.schedule-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(0, 136, 204, 0.35);
+/* Ambient glowing mesh orbs */
+.editorial-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.55;
 }
 
-.schedule-card.highlight {
-  border-color: rgba(0, 164, 228, 0.35);
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbfe 100%);
+.editorial-glow-1 {
+  width: 500px;
+  height: 500px;
+  top: -120px;
+  left: -150px;
+  background: radial-gradient(circle, rgba(0, 164, 228, 0.15) 0%, rgba(0, 164, 228, 0) 70%);
 }
 
-.schedule-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
+.editorial-glow-2 {
+  width: 550px;
+  height: 550px;
+  bottom: -150px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(110, 168, 36, 0.12) 0%, rgba(110, 168, 36, 0) 70%);
 }
 
-.schedule-icon-wrap {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: var(--brand-green-light);
-  color: var(--brand-green);
+.editorial-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1140px;
+}
+
+/* Editorial Header */
+.editorial-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 3.5rem;
+}
+
+.editorial-badge-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
-  flex-shrink: 0;
-}
-
-.schedule-icon-wrap.commercial {
-  background: var(--accent-light);
-  color: var(--primary-blue);
-}
-
-.schedule-title-area h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.2rem;
-  color: var(--primary-deep);
-}
-
-.schedule-pill {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-}
-
-.schedule-time-box {
-  background: #f8fafc;
-  border-radius: var(--radius-md);
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.25rem;
-  border: 1px solid #e2e8f0;
-}
-
-.schedule-days {
-  font-size: 0.825rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.25rem;
-}
-
-.schedule-hours-val {
-  font-family: var(--font-heading);
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: var(--primary-deep);
-}
-
-.schedule-card p.schedule-desc {
-  color: var(--text-muted);
-  font-size: 0.925rem;
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-  flex: 1;
-}
-
-.schedule-card ul.schedule-perks {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.schedule-card ul.schedule-perks li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--text-main);
-  font-weight: 500;
-}
-
-.schedule-card ul.schedule-perks li i {
-  color: var(--brand-green);
-  font-size: 0.8rem;
-}
-
-/* Service Area Coverage Hub */
-.coverage-hub {
-  background: linear-gradient(135deg, var(--primary-deep) 0%, #061c32 100%);
-  border-radius: var(--radius-2xl, 24px);
-  padding: 3.5rem 3.25rem;
-  color: #ffffff;
-  box-shadow: var(--shadow-xl);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.coverage-hub-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 3.5rem;
-  align-items: center;
-}
-
-.coverage-info h2 {
-  color: #ffffff;
-  font-size: 2.2rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.coverage-info p.coverage-lead {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 1.05rem;
-  line-height: 1.65;
-  margin-bottom: 1.75rem;
-}
-
-.coverage-highlights {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  margin-bottom: 2rem;
-}
-
-.coverage-highlight-item {
-  display: flex;
-  align-items: center;
   gap: 0.75rem;
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.coverage-highlight-item i {
-  color: #72d4ff;
-  font-size: 1.1rem;
-  width: 22px;
-  text-align: center;
-}
-
-.coverage-ctas {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* Coverage Towns Showcase */
-.coverage-towns-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: var(--radius-xl);
-  padding: 2rem 2.25rem;
-}
-
-.coverage-towns-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: 1.25rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.coverage-towns-header h4 {
-  color: #ffffff;
-  font-size: 1.15rem;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.coverage-towns-header h4 i {
-  color: #72d4ff;
-}
-
-.coverage-radius-pill {
-  background: rgba(110, 168, 36, 0.22);
-  color: #9ee344;
-  border: 1px solid rgba(110, 168, 36, 0.4);
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-full);
-}
-
-.town-pills-wrap {
-  display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-bottom: 1.5rem;
 }
 
-.town-pill {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  font-size: 0.825rem;
-  font-weight: 600;
-  padding: 0.4rem 0.85rem;
+.editorial-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.95rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary-deep);
+  background: rgba(0, 136, 204, 0.08);
+  border: 1px solid rgba(0, 136, 204, 0.2);
   border-radius: var(--radius-full);
+}
+
+.editorial-pill.pill-cyan {
+  background: rgba(0, 164, 228, 0.1);
+  color: #0077b6;
+  border-color: rgba(0, 164, 228, 0.25);
+}
+
+.editorial-live-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.95rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1e7029;
+  background: rgba(110, 168, 36, 0.14);
+  border: 1px solid rgba(110, 168, 36, 0.3);
+  border-radius: var(--radius-full);
+}
+
+.editorial-live-status .live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--brand-green);
+  box-shadow: 0 0 8px var(--brand-green);
+  animation: livePulse 1.8s infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+.editorial-headline {
+  font-size: 2.35rem;
+  letter-spacing: -0.025em;
+  line-height: 1.22;
+  color: var(--primary-deep);
+  margin-bottom: 0.85rem;
+}
+
+.editorial-subheadline {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Editorial Hours Grid */
+.editorial-hours-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.editorial-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-2xl, 24px);
+  border: 1px solid rgba(0, 102, 178, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 48, 80, 0.05);
+  padding: 3rem 2.75rem 2.75rem;
+  overflow: hidden;
   transition: var(--transition);
 }
 
-.town-pill:hover {
-  background: rgba(0, 164, 228, 0.25);
-  border-color: #72d4ff;
+.editorial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 50px rgba(0, 48, 80, 0.1);
+  border-color: rgba(0, 136, 204, 0.35);
+}
+
+/* Watermark typography */
+.editorial-watermark {
+  position: absolute;
+  top: -15px;
+  right: 15px;
+  font-family: var(--font-heading);
+  font-size: 5.5rem;
+  font-weight: 900;
+  color: rgba(0, 75, 122, 0.035);
+  user-select: none;
+  pointer-events: none;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.editorial-card-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.editorial-tier-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 48, 80, 0.08);
+}
+
+.editorial-tag {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-green);
+  background: rgba(110, 168, 36, 0.12);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.editorial-tag.tag-blue {
+  color: var(--primary-blue);
+  background: rgba(0, 136, 204, 0.1);
+}
+
+.editorial-metric {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.editorial-time-display {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.editorial-time-val {
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--primary-deep);
+  line-height: 1;
+}
+
+.editorial-time-val small {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-left: 0.2rem;
+  color: var(--primary-blue);
+}
+
+.editorial-time-sep {
+  font-size: 1.8rem;
+  color: #cbd5e1;
+  font-weight: 300;
+}
+
+.editorial-time-badge {
+  background: rgba(0, 136, 204, 0.12);
+  color: var(--primary-blue);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-left: 0.75rem;
+}
+
+.editorial-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+  flex: 1;
+}
+
+.editorial-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.editorial-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.editorial-feature-item i {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(110, 168, 36, 0.15);
+  color: var(--brand-green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  flex-shrink: 0;
+}
+
+/* Editorial Territory Showcase */
+.editorial-territory-showcase {
+  position: relative;
+  background: #ffffff;
+  border-radius: var(--radius-2xl, 24px);
+  border: 1px solid rgba(0, 102, 178, 0.12);
+  box-shadow: 0 20px 45px rgba(0, 48, 80, 0.06);
+  padding: 3.5rem 3.25rem;
+  overflow: hidden;
+}
+
+.editorial-watermark-number {
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  font-family: var(--font-heading);
+  font-size: 13rem;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(0, 136, 204, 0.035);
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+  z-index: 1;
+}
+
+.territory-top-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.territory-title-wrap {
+  max-width: 620px;
+}
+
+.territory-title-wrap h3 {
+  font-size: 1.85rem;
+  letter-spacing: -0.02em;
+  color: var(--primary-deep);
+  margin: 0.75rem 0 0.5rem;
+}
+
+.territory-title-wrap p {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.territory-quick-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--primary-deep);
+  border: 1.5px solid rgba(0, 48, 80, 0.2);
+  padding: 0.85rem 1.65rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.btn-outline-dark:hover {
+  background: var(--primary-deep);
   color: #ffffff;
+  border-color: var(--primary-deep);
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(7, 34, 59, 0.2);
+}
+
+/* Territory Radar Graphic (DeKalb Center Orbit) */
+.territory-radar-diagram {
+  position: relative;
+  z-index: 2;
+  background: radial-gradient(circle at center, #ffffff 0%, #f4f8fb 100%);
+  border: 1px solid rgba(0, 102, 178, 0.14);
+  border-radius: var(--radius-xl);
+  height: 560px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 48, 80, 0.03);
+}
+
+/* Concentric Radar Distance Rings */
+.radar-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 136, 204, 0.22);
+  pointer-events: none;
+}
+
+.radar-ring-1 {
+  width: 200px;
+  height: 200px;
+  border-color: rgba(0, 136, 204, 0.25);
+  background: rgba(0, 136, 204, 0.02);
+}
+
+.radar-ring-2 {
+  width: 360px;
+  height: 360px;
+  border-color: rgba(0, 136, 204, 0.18);
+}
+
+.radar-ring-3 {
+  width: 520px;
+  height: 520px;
+  border-color: rgba(0, 136, 204, 0.12);
+}
+
+/* Subtle cross-axes */
+.radar-axis-x {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 136, 204, 0.12) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.radar-axis-y {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 136, 204, 0.12) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Radar Center Node (DeKalb) */
+.radar-center-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.center-core-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--primary-deep) 0%, #004b7a 100%);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 24px rgba(7, 34, 59, 0.28);
+  border: 2px solid #ffffff;
+  transition: transform 0.25s ease;
+  cursor: default;
+}
+
+.center-core-pill i {
+  color: #72d4ff;
+  font-size: 1.05rem;
+}
+
+.center-core-caption {
+  margin-top: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary-blue);
+  background: #ffffff;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0, 136, 204, 0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Continuous Pulse Wave */
+.radar-pulse-wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  margin-top: -45px;
+  margin-left: -45px;
+  border-radius: 50%;
+  background: rgba(0, 164, 228, 0.25);
+  animation: radarRipple 3s cubic-bezier(0.1, 0.5, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes radarRipple {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+
+/* Satellite City Pills (Strictly Non-Overlapping Radial Positions) */
+.satellite-pill {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  color: var(--text-main);
+  border: 1px solid rgba(0, 48, 80, 0.14);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px rgba(0, 48, 80, 0.06);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: all 0.22s cubic-bezier(0.2, 0, 0.2, 1);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.satellite-pill::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--brand-green);
+  margin-right: 0.45rem;
+  display: inline-block;
+}
+
+.satellite-pill:hover {
+  background: var(--primary-deep);
+  color: #ffffff;
+  border-color: var(--primary-deep);
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 8px 20px rgba(7, 34, 59, 0.22);
+  z-index: 12;
+}
+
+.satellite-pill:hover::before {
+  background-color: #72d4ff;
+}
+
+/* Inner Orbit (4 items at 90 deg quadrants) */
+.pos-north-close    { top: 29%; left: 50%; } /* Sycamore (North) */
+.pos-east-close     { top: 50%; left: 71%; } /* Cortland (East) */
+.pos-south-close    { top: 71%; left: 50%; } /* Maple Park (South) */
+.pos-west-close     { top: 50%; left: 29%; } /* Kingston (West) */
+
+/* Mid Orbit (6 items well-spaced) */
+.pos-northwest-mid  { top: 22%; left: 28%; } /* Belvidere (NW) */
+.pos-north-mid      { top: 16%; left: 63%; } /* Genoa (NNE) */
+.pos-northeast-mid  { top: 32%; left: 81%; } /* Hampshire (ENE) */
+.pos-southwest-mid  { top: 69%; left: 23%; } /* Sandwich (SW) */
+.pos-west-mid       { top: 40%; left: 16%; } /* Rochelle (WNW) */
+.pos-east-mid       { top: 62%; left: 79%; } /* Elburn (ESE) */
+.pos-south-mid      { top: 83%; left: 38%; } /* Somonauk (SSW) */
+
+/* Outer Orbit (6 items along perimeter with zero collision) */
+.pos-northeast-outer { top: 11%; left: 84%; } /* Elgin (NE edge) */
+.pos-east-outer      { top: 46%; left: 91%; } /* St. Charles (Far East) */
+.pos-southeast-outer { top: 75%; left: 88%; } /* Geneva (SE edge) */
+.pos-south-outer     { top: 88%; left: 76%; } /* Batavia (SSE edge) */
+.pos-far-southeast   { top: 92%; left: 57%; } /* Yorkville (South edge) */
+.pos-far-south       { top: 90%; left: 22%; } /* Plano (SSW edge) */
+
+.territory-footer-notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.notice-text {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.notice-text i {
+  color: var(--primary-blue);
+  font-size: 1rem;
+}
+
+.notice-link {
+  color: var(--primary-blue);
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.notice-link:hover {
+  color: var(--primary-deep);
+  text-decoration: underline;
+}
+
+/* Responsive Media Queries for Editorial Layout */
+@media (max-width: 1024px) {
+  .editorial-hours-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .territory-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .editorial-territory-section {
+    padding: 4rem 0;
+  }
+
+  .editorial-headline {
+    font-size: 1.95rem;
+  }
+
+  .editorial-card {
+    padding: 2.25rem 1.75rem 2rem;
+  }
+
+  .editorial-time-val {
+    font-size: 2.1rem;
+  }
+
+  .editorial-territory-showcase {
+    padding: 2.25rem 1.25rem;
+  }
+
+  .territory-radar-diagram {
+    height: 440px;
+  }
+
+  .satellite-pill {
+    font-size: 0.75rem;
+    padding: 0.28rem 0.65rem;
+  }
+
+  .editorial-watermark-number {
+    font-size: 8rem;
+    right: -10px;
+    bottom: -20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .territory-radar-diagram {
+    height: 480px;
+  }
+
+  .radar-ring-3 {
+    width: 380px;
+    height: 380px;
+  }
+
+  .satellite-pill {
+    font-size: 0.7rem;
+    padding: 0.22rem 0.55rem;
+  }
 }
 
 .coverage-note-bar {
@@ -2109,8 +2528,9 @@ textarea.form-control {
 }
 
 @media (max-width: 480px) {
-  .service-thumb-wrap {
-    height: 200px;
+  .service-thumb-wrap,
+  .schedule-thumb-wrap {
+    height: 190px;
   }
 
   .service-subimage-card {
@@ -2125,8 +2545,9 @@ textarea.form-control {
     border-radius: 12px;
   }
 
-  .service-body {
-    padding: 2rem 1.25rem 1.5rem;
+  .service-body,
+  .schedule-card-body {
+    padding: 1.75rem 1.25rem 1.5rem;
   }
 }
 

@@ -6,12 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Mobile Menu Toggle
   const mobileToggle = document.querySelector('.mobile-toggle');
   const navLinks = document.querySelector('.nav-links');
+  const header = document.querySelector('.site-header');
 
   if (mobileToggle && navLinks) {
     mobileToggle.addEventListener('click', () => {
       const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
       mobileToggle.setAttribute('aria-expanded', !isExpanded);
       navLinks.classList.toggle('active');
+      
+      if (header) {
+        header.classList.toggle('menu-open', navLinks.classList.contains('active'));
+      }
       
       const icon = mobileToggle.querySelector('i');
       if (icon) {
@@ -47,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeMobileMenu() {
       if (navLinks.classList.contains('active')) {
         navLinks.classList.remove('active');
+        if (header) {
+          header.classList.remove('menu-open');
+        }
         mobileToggle.setAttribute('aria-expanded', 'false');
         const icon = mobileToggle.querySelector('i');
         if (icon) {

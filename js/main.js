@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateNavbarScroll() {
     if (!header) return;
-    const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     if (scrollPos > 20) {
       header.classList.add('scrolled');
     } else {

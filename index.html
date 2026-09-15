@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css?v=2.4">
+  <link rel="stylesheet" href="css/style.css?v=2.5">
 </head>
 <body>
 
@@ -373,13 +373,13 @@
 
         <!-- Radar / Geographic Coverage Map Diagram with Simulated Regional Vector Map -->
         <div class="territory-radar-diagram">
-          <!-- Simulated Regional Map Underlay (Northern Illinois Highway & River Grid) -->
+          <!-- Simulated Regional Map Underlay (Subtle Abstract Northern Illinois Regional Grid) -->
           <div class="radar-map-underlay">
             <svg viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice" class="radar-map-svg" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <!-- Map Road Pattern -->
+                <!-- Subtle Blueprint Map Grid -->
                 <pattern id="mapGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0, 75, 122, 0.04)" stroke-width="1"/>
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0, 75, 122, 0.03)" stroke-width="1"/>
                 </pattern>
               </defs>
 
@@ -387,34 +387,34 @@
               <rect width="100%" height="100%" fill="url(#mapGrid)" />
 
               <!-- County Territory Outlines -->
-              <g stroke="rgba(0, 75, 122, 0.12)" stroke-width="1.5" stroke-dasharray="6,4" fill="none">
+              <g stroke="rgba(0, 75, 122, 0.08)" stroke-width="1" stroke-dasharray="4,4" fill="none">
                 <!-- DeKalb County (Center) -->
-                <rect x="230" y="65" width="340" height="430" rx="6" fill="rgba(0, 136, 204, 0.015)" />
+                <rect x="230" y="65" width="340" height="430" rx="4" />
                 <!-- Kane County (East) -->
-                <rect x="570" y="65" width="200" height="430" rx="6" fill="rgba(0, 75, 122, 0.01)" />
+                <rect x="570" y="65" width="200" height="430" rx="4" />
                 <!-- Ogle / Lee County (West) -->
-                <rect x="30" y="65" width="200" height="430" rx="6" fill="rgba(0, 75, 122, 0.01)" />
+                <rect x="30" y="65" width="200" height="430" rx="4" />
               </g>
 
               <!-- County Name Watermarks -->
-              <text x="250" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="rgba(0, 75, 122, 0.2)" letter-spacing="1.5">DEKALB COUNTY</text>
-              <text x="590" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="rgba(0, 75, 122, 0.2)" letter-spacing="1.5">KANE COUNTY</text>
-              <text x="50" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="rgba(0, 75, 122, 0.2)" letter-spacing="1.5">OGLE COUNTY</text>
+              <text x="250" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="rgba(0, 75, 122, 0.15)" letter-spacing="1.5">DEKALB COUNTY</text>
+              <text x="590" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="rgba(0, 75, 122, 0.15)" letter-spacing="1.5">KANE COUNTY</text>
+              <text x="50" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="rgba(0, 75, 122, 0.15)" letter-spacing="1.5">OGLE COUNTY</text>
 
-              <!-- Waterways / Rivers (Kishwaukee River & Fox River) -->
+              <!-- Waterways / Rivers (Kishwaukee & Fox River) -->
               <g fill="none" stroke-linecap="round">
-                <!-- South Branch Kishwaukee River (meandering through DeKalb & Sycamore) -->
+                <!-- South Branch Kishwaukee River -->
                 <path d="M 405 380 Q 385 330 395 285 Q 405 240 405 195 Q 390 150 330 120 Q 270 95 190 75" 
-                      stroke="rgba(0, 164, 228, 0.32)" stroke-width="3"/>
+                      stroke="rgba(0, 164, 228, 0.18)" stroke-width="1.8"/>
                 <path d="M 405 195 Q 450 170 510 160" 
-                      stroke="rgba(0, 164, 228, 0.2)" stroke-width="1.8"/>
-                <!-- Fox River (flowing North-South on East edge through Elgin, St. Charles, Geneva, Yorkville) -->
+                      stroke="rgba(0, 164, 228, 0.14)" stroke-width="1.2"/>
+                <!-- Fox River -->
                 <path d="M 670 20 Q 645 110 705 230 Q 720 310 690 390 Q 665 460 550 515 Q 500 540 450 555" 
-                      stroke="rgba(0, 164, 228, 0.35)" stroke-width="3.5"/>
+                      stroke="rgba(0, 164, 228, 0.2)" stroke-width="2"/>
               </g>
 
-              <!-- Secondary Arterial Roads & Route Grid -->
-              <g stroke="rgba(0, 75, 122, 0.08)" stroke-width="1" fill="none">
+              <!-- Secondary Arterial Grid -->
+              <g stroke="rgba(0, 75, 122, 0.04)" stroke-width="0.75" fill="none">
                 <line x1="0" y1="140" x2="800" y2="140" />
                 <line x1="0" y1="220" x2="800" y2="220" />
                 <line x1="0" y1="360" x2="800" y2="360" />
@@ -426,85 +426,46 @@
 
               <!-- Primary State & US Highways -->
               <g fill="none" stroke-linecap="round">
-                <!-- Route 72 (North East-West Corridor) -->
-                <path d="M 0 95 L 800 95" stroke="rgba(0, 75, 122, 0.18)" stroke-width="2"/>
-                
-                <!-- Route 64 (Sycamore to St. Charles) -->
-                <path d="M 0 175 L 800 175" stroke="rgba(0, 75, 122, 0.22)" stroke-width="2.2"/>
-                
-                <!-- Route 38 (Lincoln Highway through DeKalb) -->
-                <path d="M 0 280 L 800 280" stroke="rgba(0, 75, 122, 0.24)" stroke-width="2.4"/>
-                
-                <!-- US Route 30 (South-East Corridor) -->
-                <path d="M 0 440 L 320 440 Q 480 440 680 475 L 800 495" stroke="rgba(0, 75, 122, 0.22)" stroke-width="2.2"/>
-                
-                <!-- US Route 34 (South Corridor through Sandwich & Plano) -->
-                <path d="M 0 490 Q 260 490 420 490 Q 580 490 800 475" stroke="rgba(0, 75, 122, 0.2)" stroke-width="2"/>
-                
-                <!-- Route 23 (Main North-South Corridor through Genoa, Sycamore, DeKalb) -->
-                <path d="M 400 0 L 400 560" stroke="rgba(0, 75, 122, 0.24)" stroke-width="2.5"/>
-                
-                <!-- Route 47 (Kane County North-South Corridor) -->
-                <path d="M 640 0 L 640 560" stroke="rgba(0, 75, 122, 0.2)" stroke-width="2"/>
+                <!-- Route 72 -->
+                <path d="M 0 95 L 800 95" stroke="rgba(0, 75, 122, 0.12)" stroke-width="1.2"/>
+                <!-- Route 64 -->
+                <path d="M 0 175 L 800 175" stroke="rgba(0, 75, 122, 0.14)" stroke-width="1.2"/>
+                <!-- Route 38 (Lincoln Highway) -->
+                <path d="M 0 280 L 800 280" stroke="rgba(0, 75, 122, 0.15)" stroke-width="1.4"/>
+                <!-- US Route 30 -->
+                <path d="M 0 440 L 320 440 Q 480 440 680 475 L 800 495" stroke="rgba(0, 75, 122, 0.14)" stroke-width="1.2"/>
+                <!-- US Route 34 -->
+                <path d="M 0 490 Q 260 490 420 490 Q 580 490 800 475" stroke="rgba(0, 75, 122, 0.12)" stroke-width="1.2"/>
+                <!-- Route 23 -->
+                <path d="M 400 0 L 400 560" stroke="rgba(0, 75, 122, 0.15)" stroke-width="1.4"/>
+                <!-- Route 47 -->
+                <path d="M 640 0 L 640 560" stroke="rgba(0, 75, 122, 0.12)" stroke-width="1.2"/>
               </g>
 
-              <!-- Major Interstate Expressways (Prominent Highlight Corridors) -->
+              <!-- Major Interstate Expressways -->
               <g fill="none" stroke-linecap="round">
-                <!-- Interstate 88 (Ronald Reagan Memorial Tollway East-West) -->
+                <!-- Interstate 88 -->
                 <path d="M 0 310 L 150 310 Q 280 310 400 310 Q 560 310 680 330 L 800 345" 
-                      stroke="#0088cc" stroke-width="4.5" stroke-opacity="0.32"/>
-                <path d="M 0 310 L 150 310 Q 280 310 400 310 Q 560 310 680 330 L 800 345" 
-                      stroke="#ffffff" stroke-width="1.8" stroke-opacity="0.85" stroke-dasharray="8,6"/>
-
-                <!-- Interstate 39 (North-South Expressway through Rochelle) -->
+                      stroke="#0088cc" stroke-width="1.8" stroke-opacity="0.25"/>
+                <!-- Interstate 39 -->
                 <path d="M 140 0 L 140 560" 
-                      stroke="#0088cc" stroke-width="4.5" stroke-opacity="0.32"/>
-                <path d="M 140 0 L 140 560" 
-                      stroke="#ffffff" stroke-width="1.8" stroke-opacity="0.85" stroke-dasharray="8,6"/>
+                      stroke="#0088cc" stroke-width="1.8" stroke-opacity="0.25"/>
               </g>
 
-              <!-- Highway Route Badges -->
-              <!-- I-88 Badge -->
-              <g transform="translate(265, 298)">
-                <rect x="0" y="0" width="34" height="18" rx="4" fill="#004b7a" stroke="#ffffff" stroke-width="1"/>
-                <text x="17" y="13" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">I-88</text>
-              </g>
-              <!-- I-39 Badge -->
-              <g transform="translate(123, 140)">
-                <rect x="0" y="0" width="34" height="18" rx="4" fill="#004b7a" stroke="#ffffff" stroke-width="1"/>
-                <text x="17" y="13" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">I-39</text>
-              </g>
-              <!-- IL-23 Badge -->
-              <g transform="translate(408, 105)">
-                <rect x="0" y="0" width="36" height="16" rx="3" fill="#ffffff" stroke="rgba(0,75,122,0.4)" stroke-width="1"/>
-                <text x="18" y="12" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#004b7a" text-anchor="middle">IL-23</text>
-              </g>
-              <!-- IL-64 Badge -->
-              <g transform="translate(485, 163)">
-                <rect x="0" y="0" width="36" height="16" rx="3" fill="#ffffff" stroke="rgba(0,75,122,0.4)" stroke-width="1"/>
-                <text x="18" y="12" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#004b7a" text-anchor="middle">IL-64</text>
-              </g>
-              <!-- US-30 Badge -->
-              <g transform="translate(250, 428)">
-                <rect x="0" y="0" width="38" height="16" rx="3" fill="#ffffff" stroke="rgba(0,75,122,0.4)" stroke-width="1"/>
-                <text x="19" y="12" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#004b7a" text-anchor="middle">US-30</text>
+              <!-- Subtle Route Labels -->
+              <g font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="rgba(0, 75, 122, 0.2)" letter-spacing="0.5">
+                <text x="270" y="306">I-88</text>
+                <text x="145" y="150">I-39</text>
+                <text x="408" y="115">IL-23</text>
+                <text x="490" y="171">IL-64</text>
+                <text x="255" y="436">US-30</text>
               </g>
 
-              <!-- Map Legend / Orientation Elements -->
-              <!-- Compass Rose -->
-              <g transform="translate(45, 45)" opacity="0.6">
-                <circle cx="16" cy="16" r="15" fill="none" stroke="rgba(0,75,122,0.2)" stroke-width="1"/>
-                <path d="M 16 5 L 19 16 L 16 13 L 13 16 Z" fill="#0088cc"/>
-                <path d="M 16 27 L 19 16 L 16 19 L 13 16 Z" fill="rgba(0,75,122,0.3)"/>
-                <text x="16" y="2" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" fill="#004b7a" text-anchor="middle">N</text>
-              </g>
-
-              <!-- Coordinates / Scale Bar -->
-              <g transform="translate(680, 525)" opacity="0.55">
-                <line x1="0" y1="10" x2="60" y2="10" stroke="#004b7a" stroke-width="2"/>
-                <line x1="0" y1="6" x2="0" y2="14" stroke="#004b7a" stroke-width="2"/>
-                <line x1="60" y1="6" x2="60" y2="14" stroke="#004b7a" stroke-width="2"/>
-                <text x="30" y="6" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#004b7a" text-anchor="middle">10 MILES</text>
+              <!-- Subtle Compass Indicator -->
+              <g transform="translate(45, 45)" opacity="0.25">
+                <circle cx="16" cy="16" r="14" fill="none" stroke="rgba(0,75,122,0.3)" stroke-width="0.8"/>
+                <path d="M 16 6 L 18 16 L 16 14 L 14 16 Z" fill="#0088cc"/>
+                <text x="16" y="3" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="800" fill="#004b7a" text-anchor="middle">N</text>
               </g>
             </svg>
           </div>
@@ -615,6 +576,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=2.4"></script>
+  <script src="js/main.js?v=2.5"></script>
 </body>
 </html>

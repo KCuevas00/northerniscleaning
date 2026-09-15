@@ -1768,7 +1768,7 @@ textarea.form-control {
   box-shadow: inset 0 2px 12px rgba(0, 48, 80, 0.04);
 }
 
-/* Simulated Vector Map Underlay */
+/* Simulated Vector Map Underlay (Subtle Abstract Radar Watermark) */
 .radar-map-underlay {
   position: absolute;
   inset: 0;
@@ -1777,7 +1777,7 @@ textarea.form-control {
   z-index: 1;
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.92;
+  opacity: 0.18;
 }
 
 .radar-map-svg {

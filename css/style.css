@@ -1886,7 +1886,7 @@ textarea.form-control {
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-/* Continuous Pulse Wave */
+/* Continuous Pulse Wave & Radar Sweep Beam (Animation Feature 3) */
 .radar-pulse-wave {
   position: absolute;
   top: 50%;
@@ -1900,6 +1900,26 @@ textarea.form-control {
   animation: radarRipple 3s cubic-bezier(0.1, 0.5, 0.2, 1) infinite;
   pointer-events: none;
   z-index: -1;
+}
+
+.radar-sweep-beam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 520px;
+  height: 520px;
+  margin-top: -260px;
+  margin-left: -260px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 290deg, rgba(0, 164, 228, 0.02) 325deg, rgba(0, 164, 228, 0.16) 360deg);
+  pointer-events: none;
+  z-index: 2;
+  animation: radarSweepSpin 8s linear infinite;
+}
+
+@keyframes radarSweepSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 @keyframes radarRipple {
@@ -1925,16 +1945,25 @@ textarea.form-control {
   transition: all 0.22s cubic-bezier(0.2, 0, 0.2, 1);
   white-space: nowrap;
   user-select: none;
+  z-index: 3;
 }
 
 .satellite-pill::before {
   content: '';
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: var(--brand-green);
   margin-right: 0.45rem;
   display: inline-block;
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
+  animation: satellitePulse 2.8s infinite;
+}
+
+@keyframes satellitePulse {
+  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
 }
 
 .satellite-pill:hover {
@@ -2646,13 +2675,13 @@ textarea.form-control {
 }
 
 /* ==========================================================================
-   Premium Scroll-Triggered Fade-In Text & Content Animations
+   Scroll-Triggered Fade-In Animations (Fast & Responsive)
    ========================================================================== */
 .scroll-reveal {
   opacity: 0;
-  transform: translate3d(0, 24px, 0);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translate3d(0, 14px, 0);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -2661,13 +2690,13 @@ textarea.form-control {
   transform: translate3d(0, 0, 0);
 }
 
-/* Subtle Stagger Delays for child cards and elements */
-.scroll-reveal.stagger-1 { transition-delay: 0.06s; }
-.scroll-reveal.stagger-2 { transition-delay: 0.12s; }
-.scroll-reveal.stagger-3 { transition-delay: 0.18s; }
-.scroll-reveal.stagger-4 { transition-delay: 0.24s; }
-.scroll-reveal.stagger-5 { transition-delay: 0.30s; }
-.scroll-reveal.stagger-6 { transition-delay: 0.36s; }
+/* Snappy Stagger Delays */
+.scroll-reveal.stagger-1 { transition-delay: 0.03s; }
+.scroll-reveal.stagger-2 { transition-delay: 0.06s; }
+.scroll-reveal.stagger-3 { transition-delay: 0.09s; }
+.scroll-reveal.stagger-4 { transition-delay: 0.12s; }
+.scroll-reveal.stagger-5 { transition-delay: 0.15s; }
+.scroll-reveal.stagger-6 { transition-delay: 0.18s; }
 
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal {
@@ -2676,5 +2705,84 @@ textarea.form-control {
     transition: none !important;
   }
 }
+
+/* ==========================================================================
+   ANIMATION FEATURE 1: Spotless Shimmer Light Sweep on Badges & Primary Buttons
+   ========================================================================== */
+.badge-cyan,
+.badge-green,
+.editorial-pill,
+.editorial-live-status,
+.btn-green,
+.gallery-tag {
+  position: relative;
+  overflow: hidden;
+}
+
+.badge-cyan::after,
+.badge-green::after,
+.editorial-pill::after,
+.editorial-live-status::after,
+.btn-green::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -130%;
+  width: 50%;
+  height: 220%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 80%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  animation: spotlessShimmer 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes spotlessShimmer {
+  0% {
+    left: -130%;
+  }
+  28%, 100% {
+    left: 220%;
+  }
+}
+
+/* ==========================================================================
+   ANIMATION FEATURE 2: 3D Tilt & Cursor Glow Spotlight on Cards
+   ========================================================================== */
+.service-card,
+.editorial-card {
+  transform-style: preserve-3d;
+  transition: transform 0.22s cubic-bezier(0.2, 0, 0.2, 1),
+              box-shadow 0.22s cubic-bezier(0.2, 0, 0.2, 1),
+              border-color 0.22s ease;
+  position: relative;
+}
+
+.service-card::after,
+.editorial-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(0, 164, 228, 0.09),
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: var(--card-glow, 0);
+  transition: opacity 0.3s ease;
+  z-index: 4;
+}
+
+.service-card:hover,
+.editorial-card:hover {
+  --card-glow: 1;
+}
+
 
 

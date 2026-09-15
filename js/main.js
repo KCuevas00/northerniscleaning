@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
     requestParallaxUpdate();
   }
 
-  // 9. Premium Scroll-Triggered Fade-In Text & Content Reveal Animations
+  // 9. Premium Scroll-Triggered Fade-In Text & Content Reveal Animations (Fast & Responsive)
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
     const revealSelectors = [
       '.section-header',
@@ -430,8 +430,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, {
-      rootMargin: '0px 0px -40px 0px',
-      threshold: 0.08
+      // Trigger 100px before scrolling into view so content is immediately visible with zero delay
+      rootMargin: '0px 0px 100px 0px',
+      threshold: 0.01
     });
 
     elementsToReveal.forEach((el) => {
@@ -454,14 +455,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // If already in viewport on initial load, reveal immediately
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
+      if (rect.top < window.innerHeight + 50 && rect.bottom > 0) {
         el.classList.add('revealed');
       } else {
         revealObserver.observe(el);
       }
     });
   }
+
+  // 10. Apple-Style 3D Tilt & Cursor Glow Spotlight on Cards (Animation Feature 2)
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const tiltCards = document.querySelectorAll('.service-card, .editorial-card');
+
+    tiltCards.forEach(card => {
+      let isHovered = false;
+      let frameId = null;
+
+      card.addEventListener('mouseenter', () => {
+        isHovered = true;
+      });
+
+      card.addEventListener('mousemove', (e) => {
+        if (!isHovered) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Subtle 3.5-degree maximum tilt for a refined luxury feel
+        const rotateX = ((y - centerY) / centerY) * -3.2;
+        const rotateY = ((x - centerX) / centerX) * 3.2;
+
+        if (frameId) cancelAnimationFrame(frameId);
+        frameId = requestAnimationFrame(() => {
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+          card.style.transform = `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        isHovered = false;
+        if (frameId) cancelAnimationFrame(frameId);
+        card.style.transform = '';
+      });
+    });
+  }
 });
+
 
 
 

@@ -798,16 +798,16 @@ section[id], div[id] {
   color: var(--brand-green);
 }
 
-/* Parallax Subimage Floating Card (~30% larger, Continuous Smooth Upward Motion) */
+/* Parallax Subimage Floating Card (Shifted down and to the right into whitespace) */
 .service-subimage-card {
   position: absolute;
-  bottom: -24px;
-  right: 18px;
+  bottom: -36px;
+  right: -22px;
   width: 192px;
   height: 142px;
   border-radius: 18px;
   border: none;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.38);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
   z-index: 5;
   -webkit-transform: translate3d(0, var(--subimage-y, 0px), 0);
   transform: translate3d(0, var(--subimage-y, 0px), 0);
@@ -816,7 +816,7 @@ section[id], div[id] {
 }
 
 .service-card:hover .service-subimage-card {
-  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.48);
+  box-shadow: 0 26px 58px rgba(0, 0, 0, 0.5);
 }
 
 .subimage-inner {
@@ -2608,8 +2608,8 @@ textarea.form-control {
   .service-subimage-card {
     width: 165px;
     height: 124px;
-    bottom: -18px;
-    right: 14px;
+    bottom: -28px;
+    right: -12px;
     border-radius: 14px;
   }
 
@@ -2627,8 +2627,8 @@ textarea.form-control {
   .service-subimage-card {
     width: 145px;
     height: 110px;
-    bottom: -16px;
-    right: 12px;
+    bottom: -22px;
+    right: -6px;
     border-radius: 12px;
   }
 

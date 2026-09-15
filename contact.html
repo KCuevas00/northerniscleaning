@@ -104,56 +104,61 @@
 
           <div id="formStatus" class="form-status"></div>
 
-          <form id="contactQuoteForm">
+          <form id="contactQuoteForm" action="https://formsubmit.co/Northernisc@gmail.com" method="POST">
+            <!-- FormSubmit Options -->
+            <input type="hidden" name="_subject" value="New Cleaning Quote Request - Northern Illinois Cleaning Services">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+
             <div class="form-group-row">
               <div class="form-group">
                 <label for="fullName" class="form-label">Full Name *</label>
-                <input type="text" id="fullName" class="form-control" placeholder="John Doe" required>
+                <input type="text" id="fullName" name="Name" class="form-control" placeholder="John Doe" required>
               </div>
               <div class="form-group">
                 <label for="phone" class="form-label">Phone Number (Call or Text) *</label>
-                <input type="tel" id="phone" class="form-control" placeholder="(815) 000-0000" required>
+                <input type="tel" id="phone" name="Phone" class="form-control" placeholder="(815) 000-0000" required>
               </div>
             </div>
 
             <div class="form-group-row">
               <div class="form-group">
                 <label for="email" class="form-label">Email Address (Optional)</label>
-                <input type="email" id="email" class="form-control" placeholder="name@example.com">
+                <input type="email" id="email" name="Email" class="form-control" placeholder="name@example.com">
               </div>
               <div class="form-group">
                 <label for="cityLocation" class="form-label">City / Town</label>
-                <input type="text" id="cityLocation" class="form-control" placeholder="e.g. DeKalb, Sycamore, Rochelle...">
+                <input type="text" id="cityLocation" name="City / Town" class="form-control" placeholder="e.g. DeKalb, Sycamore, Rochelle...">
               </div>
             </div>
 
             <div class="form-group-row">
               <div class="form-group">
                 <label for="serviceType" class="form-label">Type of Cleaning</label>
-                <select id="serviceType" class="form-control">
-                  <option value="house_apartment">Houses &amp; Apartments (Residential)</option>
-                  <option value="commercial_office">Offices &amp; Commercial</option>
-                  <option value="regular_clean">Regular Maintenance Cleaning</option>
-                  <option value="deep_cleaning">Deep Cleaning</option>
-                  <option value="move_in_out">Move-In / Move-Out</option>
-                  <option value="floor_carpet">Floor Care &amp; Other</option>
+                <select id="serviceType" name="Service Type" class="form-control">
+                  <option value="Houses & Apartments (Residential)">Houses &amp; Apartments (Residential)</option>
+                  <option value="Offices & Commercial">Offices &amp; Commercial</option>
+                  <option value="Regular Maintenance Cleaning">Regular Maintenance Cleaning</option>
+                  <option value="Deep Cleaning">Deep Cleaning</option>
+                  <option value="Move-In / Move-Out">Move-In / Move-Out</option>
+                  <option value="Floor Care & Other">Floor Care &amp; Other</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="serviceFrequency" class="form-label">Desired Frequency</label>
-                <select id="serviceFrequency" class="form-control">
-                  <option value="one_time">One-Time Clean / Move</option>
-                  <option value="weekly">Weekly</option>
-                  <option value="bi_weekly">Bi-Weekly (Every 2 Weeks)</option>
-                  <option value="monthly">Monthly</option>
-                  <option value="daily">Daily (Commercial)</option>
+                <select id="serviceFrequency" name="Frequency" class="form-control">
+                  <option value="One-Time Clean / Move">One-Time Clean / Move</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Bi-Weekly (Every 2 Weeks)">Bi-Weekly (Every 2 Weeks)</option>
+                  <option value="Monthly">Monthly</option>
+                  <option value="Daily (Commercial)">Daily (Commercial)</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
               <label for="message" class="form-label">Details / Special Instructions</label>
-              <textarea id="message" class="form-control" placeholder="Tell us about the space (number of bedrooms/bathrooms or office size), preferred day/time, or specific requirements."></textarea>
+              <textarea id="message" name="Details / Instructions" class="form-control" placeholder="Tell us about the space (number of bedrooms/bathrooms or office size), preferred day/time, or specific requirements."></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%;">

@@ -201,31 +201,62 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 6. Contact & Estimate Form Interactive Submission
+  // 6. Contact & Estimate Form Submission via FormSubmit.co
   const quoteForm = document.getElementById('contactQuoteForm');
   if (quoteForm) {
-    quoteForm.addEventListener('submit', (e) => {
+    quoteForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const submitBtn = quoteForm.querySelector('button[type="submit"]');
       const statusBox = document.getElementById('formStatus');
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '<i class="fa-solid fa-paper-plane"></i> Submit for Free Estimate';
 
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing Request...';
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Request...';
       }
 
-      setTimeout(() => {
+      if (statusBox) {
+        statusBox.style.display = 'none';
+        statusBox.className = 'form-status';
+      }
+
+      const formData = new FormData(quoteForm);
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/Northernisc@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok || result.success === 'true' || result.success === true) {
+          if (statusBox) {
+            statusBox.className = 'form-status success';
+            statusBox.innerHTML = '<i class="fa-solid fa-circle-check"></i> <strong>Thank you!</strong> Your quote request has been submitted. A Northern Illinois Cleaning specialist will review your details and contact you shortly.';
+            statusBox.style.display = 'block';
+            statusBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+          quoteForm.reset();
+        } else {
+          throw new Error(result.message || 'Form submission failed');
+        }
+      } catch (err) {
         if (statusBox) {
-          statusBox.className = 'form-status success';
-          statusBox.innerHTML = '<i class="fa-solid fa-circle-check"></i> Thank you! Your proposal request has been received. A Northern Illinois Cleaning specialist will review your details and contact you within 24 hours.';
+          statusBox.className = 'form-status error';
+          statusBox.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> <strong>Note:</strong> We couldn\'t submit online at this moment. Please call or text us directly at <a href="tel:8159013568" style="color: inherit; text-decoration: underline; font-weight: 700;">(815) 901-3568</a>.';
+          statusBox.style.display = 'block';
           statusBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
-        quoteForm.reset();
+      } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Request Free Consultation';
+          submitBtn.innerHTML = originalBtnHtml;
         }
-      }, 1000);
+      }
     });
   }
 

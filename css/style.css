@@ -1430,6 +1430,13 @@ textarea.form-control {
   border: 1px solid rgba(110, 168, 36, 0.3);
 }
 
+.form-status.error {
+  display: block;
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
 /* Contact Info Sidebar */
 .contact-sidebar {
   display: flex;

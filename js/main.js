@@ -402,10 +402,11 @@ document.addEventListener('DOMContentLoaded', () => {
     requestParallaxUpdate();
   }
 
-  // 9. Premium Scroll-Triggered Fade-In Text & Content Reveal Animations (Fast & Responsive)
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+  // 9. Premium Scroll-Triggered Fade-In & Masked Heading Reveal Animations (100% Mobile & Desktop Compatible)
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const revealSelectors = [
       '.section-header',
+      '.heading-reveal-mask',
       '.service-card',
       '.editorial-header',
       '.editorial-card',
@@ -422,45 +423,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const elementsToReveal = document.querySelectorAll(revealSelectors.join(', '));
 
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
+    if (elementsToReveal.length > 0) {
+      // Prepare elements with reveal classes and stagger indices
+      elementsToReveal.forEach((el) => {
+        if (el.closest('.top-utility-bar') || el.closest('.site-header')) {
+          return;
+        }
+
+        if (!el.classList.contains('heading-reveal-mask')) {
+          el.classList.add('scroll-reveal');
+        }
+
+        const parentGrid = el.closest('.services-grid, .editorial-hours-grid, .gallery-grid, .faq-grid');
+        if (parentGrid) {
+          const siblings = Array.from(parentGrid.children);
+          const index = siblings.indexOf(el);
+          if (index >= 0) {
+            el.classList.add(`stagger-${Math.min((index % 6) + 1, 6)}`);
+          }
         }
       });
-    }, {
-      // Trigger 100px before scrolling into view so content is immediately visible with zero delay
-      rootMargin: '0px 0px 100px 0px',
-      threshold: 0.01
-    });
 
-    elementsToReveal.forEach((el) => {
-      // Avoid hiding top navigation or top utility bar
-      if (el.closest('.top-utility-bar') || el.closest('.site-header')) {
-        return;
+      // Rock-solid visibility checker for mobile Safari & all viewports
+      function checkScrollVisibility() {
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const triggerMargin = 120; // Triggers 120px before entering viewport bottom
+
+        elementsToReveal.forEach((el) => {
+          if (el.classList.contains('revealed')) return;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= vh + triggerMargin && rect.bottom >= -50) {
+            el.classList.add('revealed');
+          }
+        });
       }
 
-      el.classList.add('scroll-reveal');
+      // 1. Primary: IntersectionObserver (where supported)
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          rootMargin: '120px 0px 120px 0px',
+          threshold: 0.01
+        });
 
-      // Stagger items within grids
-      const parentGrid = el.closest('.services-grid, .editorial-hours-grid, .gallery-grid, .faq-grid');
-      if (parentGrid) {
-        const siblings = Array.from(parentGrid.children);
-        const index = siblings.indexOf(el);
-        if (index >= 0) {
-          el.classList.add(`stagger-${Math.min((index % 6) + 1, 6)}`);
+        elementsToReveal.forEach(el => revealObserver.observe(el));
+      }
+
+      // 2. High-performance backup scroll and touch event listener for mobile momentum scrolling
+      let scrollTimer = false;
+      function handleScrollCheck() {
+        if (!scrollTimer) {
+          requestAnimationFrame(() => {
+            checkScrollVisibility();
+            scrollTimer = false;
+          });
+          scrollTimer = true;
         }
       }
 
-      // If already in viewport on initial load, reveal immediately
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight + 50 && rect.bottom > 0) {
-        el.classList.add('revealed');
-      } else {
-        revealObserver.observe(el);
-      }
-    });
+      window.addEventListener('scroll', handleScrollCheck, { passive: true });
+      window.addEventListener('touchmove', handleScrollCheck, { passive: true });
+      window.addEventListener('resize', handleScrollCheck, { passive: true });
+      window.addEventListener('orientationchange', handleScrollCheck, { passive: true });
+
+      // Immediate checks on initial paint and micro-intervals
+      checkScrollVisibility();
+      setTimeout(checkScrollVisibility, 60);
+      setTimeout(checkScrollVisibility, 250);
+      setTimeout(checkScrollVisibility, 600);
+    }
   }
 
   // 10. Apple-Style 3D Tilt & Cursor Glow Spotlight on Cards (Animation Feature 2)

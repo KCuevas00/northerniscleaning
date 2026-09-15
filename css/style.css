@@ -2784,5 +2784,46 @@ textarea.form-control {
   --card-glow: 1;
 }
 
+/* ==========================================================================
+   ANIMATION FEATURE: Editorial Masked "Slide-Up" Heading Reveal (Apple Style)
+   ========================================================================== */
+.heading-reveal-mask {
+  overflow: hidden;
+  display: block;
+  padding-bottom: 4px;
+}
+
+.heading-reveal-mask > h1,
+.heading-reveal-mask > h2,
+.heading-reveal-mask > h3 {
+  transform: translate3d(0, 110%, 0);
+  opacity: 0;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.45s ease;
+  will-change: transform, opacity;
+  margin-bottom: 0.25rem;
+}
+
+.revealed .heading-reveal-mask > h1,
+.revealed .heading-reveal-mask > h2,
+.revealed .heading-reveal-mask > h3,
+.heading-reveal-mask.revealed > h1,
+.heading-reveal-mask.revealed > h2,
+.heading-reveal-mask.revealed > h3 {
+  transform: translate3d(0, 0%, 0) !important;
+  opacity: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heading-reveal-mask > h1,
+  .heading-reveal-mask > h2,
+  .heading-reveal-mask > h3 {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
+
+
 
 

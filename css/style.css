@@ -798,7 +798,7 @@ section[id], div[id] {
   color: var(--brand-green);
 }
 
-/* Parallax Subimage Floating Card (Bottom Right - Slower Scroll) */
+/* Parallax Subimage Floating Card (Bottom Right - Continuous Smooth Upward Motion) */
 .service-subimage-card {
   position: absolute;
   bottom: -22px;
@@ -811,14 +811,12 @@ section[id], div[id] {
   z-index: 5;
   -webkit-transform: translate3d(0, var(--subimage-y, 0px), 0);
   transform: translate3d(0, var(--subimage-y, 0px), 0);
-  transition: transform 0.15s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
   will-change: transform;
 }
 
 .service-card:hover .service-subimage-card {
-  -webkit-transform: translate3d(0, var(--subimage-y, 0px), 0) scale(1.05);
-  transform: translate3d(0, var(--subimage-y, 0px), 0) scale(1.05);
-  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.45);
 }
 
 .subimage-inner {
@@ -828,6 +826,11 @@ section[id], div[id] {
   border-radius: 16px;
   overflow: hidden;
   background-color: #07223b;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.service-card:hover .subimage-inner {
+  transform: scale(1.04);
 }
 
 .subimage-inner img {

@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cycleTimer = setInterval(nextVideo, clipDuration);
   }
 
-  // 8. Premium Parallax Subimages Effect (Multi-Plane Slower Scroll)
+  // 8. Premium Parallax Subimages Effect (Continuous Full-Range Motion to Top of Main Image)
   const subimageCards = document.querySelectorAll('.service-subimage-card');
 
   if (subimageCards.length > 0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -361,20 +361,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateParallax() {
       const windowHeight = window.innerHeight;
-      const viewportCenter = windowHeight / 2;
 
       visibleCards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        // Distance from card center to viewport center
-        const cardCenter = rect.top + rect.height / 2;
-        const delta = cardCenter - viewportCenter;
+        const thumbWrap = card.closest('.service-thumb-wrap');
+        const cardRect = (thumbWrap || card).getBoundingClientRect();
 
-        // Individual speed multiplier from data attribute (e.g. 0.13 - 0.18)
-        const speed = parseFloat(card.dataset.parallaxSpeed) || 0.15;
+        // Calculate scroll progress through the viewport (0 = entering at bottom, 1 = exiting at top)
+        const totalDistance = windowHeight + cardRect.height;
+        const currentDistance = windowHeight - cardRect.top;
+        const progress = Math.max(0, Math.min(1, currentDistance / totalDistance));
 
-        // Bound translation between -22px and +22px for sleek optical lag
-        const maxTranslate = 22;
-        const translateY = Math.max(-maxTranslate, Math.min(maxTranslate, delta * speed));
+        // Total distance from initial bottom position to top of main image
+        const thumbHeight = thumbWrap ? thumbWrap.offsetHeight : 220;
+        const subHeight = card.offsetHeight || 110;
+        // Allows subimage to glide all the way up to ~12px from the top edge
+        const maxTravel = Math.max(75, thumbHeight - subHeight + 20);
+
+        // Individual speed multiplier from data-parallax-speed (e.g. 0.13 - 0.18)
+        const speedMultiplier = (parseFloat(card.dataset.parallaxSpeed) || 0.15) / 0.15;
+        const travel = maxTravel * speedMultiplier;
+
+        // Continuous smooth upward motion: starts at 0 at bottom, glides up to -travel at top
+        const translateY = -(progress * travel);
 
         card.style.setProperty('--subimage-y', `${translateY.toFixed(1)}px`);
       });

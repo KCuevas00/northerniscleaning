@@ -1016,105 +1016,227 @@ section[id], div[id] {
   box-shadow: 0 4px 12px rgba(0, 136, 204, 0.25);
 }
 
+/* ==========================================================================
+   Creative Transformation Gallery (Dual Before & After with Indicator)
+   ========================================================================== */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
-.gallery-item {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background-color: #07223b;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.gallery-item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-}
-
-.gallery-media {
-  height: 280px;
-  position: relative;
-  overflow: hidden;
-}
-
-.gallery-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.gallery-item:hover .gallery-media img {
-  transform: scale(1.06);
-}
-
-.gallery-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(7, 34, 59, 0.95) 0%, rgba(7, 34, 59, 0.2) 60%, transparent 100%);
+.gallery-card {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(0, 48, 80, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 48, 80, 0.05);
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.5rem;
-  color: #ffffff;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.2, 0, 0.2, 1),
+              border-color 0.3s ease;
+  position: relative;
 }
 
-.gallery-tag {
-  align-self: flex-start;
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 48, 80, 0.1);
+  border-color: rgba(0, 136, 204, 0.25);
+}
+
+.card-header-clean {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  padding: 0 0.25rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.card-title-clean {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary-deep);
+  margin: 0;
+}
+
+.category-tag-clean {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  color: var(--primary-blue);
+  background: rgba(0, 136, 204, 0.08);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.transform-duo {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  border-radius: var(--radius-lg);
+  align-items: stretch;
+}
+
+.photo-pane,
+.showcase-photo-pane {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 240px;
+  background-color: #07223b;
+  cursor: pointer;
+}
+
+.showcase-photo-pane {
+  height: 280px;
+}
+
+.photo-pane img,
+.showcase-photo-pane img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.2, 0, 0.2, 1),
+              filter 0.4s ease;
+}
+
+/* Grayscale on Before image to emphasize dirty vs pristine transformation */
+.before-pane img {
+  filter: grayscale(88%) contrast(92%);
+}
+
+.before-pane:hover img {
+  filter: grayscale(0%) contrast(100%);
+}
+
+.photo-pane:hover img,
+.showcase-photo-pane:hover img {
+  transform: scale(1.05);
+}
+
+/* Status Badges */
+.status-pill {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.pill-before {
+  background: rgba(220, 38, 38, 0.92);
+  color: #ffffff;
+}
+
+.pill-after {
+  background: rgba(22, 163, 74, 0.95);
+  color: #ffffff;
+}
+
+.pill-showcase {
+  background: rgba(0, 75, 122, 0.88);
+  color: #ffffff;
+}
+
+/* Floating Center Indicator Arrow */
+.transform-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.indicator-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--primary-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 14px rgba(0, 48, 80, 0.2);
+  border: 2px solid var(--brand-green);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.transform-card:hover .indicator-icon {
+  transform: scale(1.18);
   background: var(--brand-green);
   color: #ffffff;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-sm);
-  margin-bottom: 0.5rem;
 }
 
-.gallery-overlay h3 {
-  color: #ffffff;
-  font-size: 1.15rem;
-  margin-bottom: 0.2rem;
-}
-
-.gallery-overlay p {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.85rem;
-  margin-bottom: 0;
-}
-
-.gallery-zoom-btn {
+/* Pane Zoom Icon */
+.pane-zoom-btn {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 38px;
-  height: 38px;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(8px);
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 0.8rem;
   opacity: 0;
-  transform: scale(0.8);
-  transition: var(--transition);
+  transform: scale(0.85);
+  transition: all 0.2s ease;
   border: none;
   cursor: pointer;
+  z-index: 3;
 }
 
-.gallery-item:hover .gallery-zoom-btn {
+.photo-pane:hover .pane-zoom-btn,
+.showcase-photo-pane:hover .pane-zoom-btn {
   opacity: 1;
   transform: scale(1);
+}
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-pane {
+    height: 165px;
+  }
+  .showcase-photo-pane {
+    height: 220px;
+  }
+  .indicator-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.75rem;
+  }
 }
 
 /* ==========================================================================

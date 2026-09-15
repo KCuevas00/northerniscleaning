@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css?v=2.8">
+  <link rel="stylesheet" href="css/style.css?v=2.9">
 </head>
 <body>
 
@@ -90,242 +90,258 @@
       <!-- Gallery Grid -->
       <div class="gallery-grid">
         
-        <!-- Pair 1: Shower Stall -->
-        <div class="gallery-item" data-category="before-after bathrooms">
-          <div class="gallery-media">
-            <img src="images/shower-before.jpg" alt="Shower Stall Before Cleaning">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: #ef4444;">Before</span>
-              <h3>Shower Stall Glass &amp; Basin</h3>
-              <p>Soap scum, hard water buildup &amp; floor staining</p>
+        <!-- Transformation 1: Shower Stall -->
+        <div class="gallery-card transform-card" data-category="before-after bathrooms">
+          <div class="card-header-clean">
+            <span class="category-tag-clean"><i class="fa-solid fa-bath"></i> Bathroom</span>
+            <h3 class="card-title-clean">Shower Stall Glass &amp; Basin</h3>
+          </div>
+          <div class="transform-duo">
+            <div class="photo-pane before-pane" data-title="Shower Stall (Before)" data-desc="Heavy soap scum and hard water mineral deposits">
+              <img src="images/shower-before.jpg" alt="Shower Stall Before Cleaning" loading="lazy">
+              <span class="status-pill pill-before">BEFORE</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+            </div>
+            
+            <div class="transform-indicator" title="Transformation">
+              <div class="indicator-icon">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+
+            <div class="photo-pane after-pane" data-title="Shower Stall (After)" data-desc="Spotless glass, scrubbed walls and polished base">
+              <img src="images/shower-after.jpg" alt="Shower Stall After Deep Cleaning" loading="lazy">
+              <span class="status-pill pill-after"><i class="fa-solid fa-wand-magic-sparkles"></i> AFTER</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
             </div>
           </div>
         </div>
 
-        <div class="gallery-item" data-category="before-after bathrooms">
-          <div class="gallery-media">
-            <img src="images/shower-after.jpg" alt="Shower Stall After Deep Cleaning">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: var(--brand-green);">After</span>
-              <h3>Shower Stall Glass &amp; Basin</h3>
-              <p>Sparkling clean glass, scrubbed walls &amp; polished base</p>
+        <!-- Transformation 2: Oven Deep Clean -->
+        <div class="gallery-card transform-card" data-category="before-after kitchens appliances">
+          <div class="card-header-clean">
+            <span class="category-tag-clean"><i class="fa-solid fa-kitchen-set"></i> Kitchen &amp; Appliance</span>
+            <h3 class="card-title-clean">Oven Interior Deep Degrease</h3>
+          </div>
+          <div class="transform-duo">
+            <div class="photo-pane before-pane" data-title="Oven Interior (Before)" data-desc="Burnt grease residue &amp; heavy carbon buildup">
+              <img src="images/oven-deepclean-before.jpg" alt="Oven Interior Before Cleaning" loading="lazy">
+              <span class="status-pill pill-before">BEFORE</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+            </div>
+            
+            <div class="transform-indicator" title="Transformation">
+              <div class="indicator-icon">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+
+            <div class="photo-pane after-pane" data-title="Oven Interior (After)" data-desc="Completely degreased, spotless glass &amp; polished racks">
+              <img src="images/oven-deepclean-after.jpg" alt="Oven Interior After Deep Cleaning" loading="lazy">
+              <span class="status-pill pill-after"><i class="fa-solid fa-wand-magic-sparkles"></i> AFTER</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
             </div>
           </div>
         </div>
 
-        <!-- Pair 2: Oven Deep Clean -->
-        <div class="gallery-item" data-category="before-after kitchens appliances">
-          <div class="gallery-media">
-            <img src="images/oven-deepclean-before.jpg" alt="Oven Interior Before Cleaning">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: #ef4444;">Before</span>
-              <h3>Oven Interior &amp; Glass Door</h3>
-              <p>Burnt grease residue &amp; heavy food carbon buildup</p>
+        <!-- Transformation 3: Stove & Oven Door -->
+        <div class="gallery-card transform-card" data-category="before-after kitchens appliances">
+          <div class="card-header-clean">
+            <span class="category-tag-clean"><i class="fa-solid fa-kitchen-set"></i> Kitchen</span>
+            <h3 class="card-title-clean">Range Top &amp; Oven Door</h3>
+          </div>
+          <div class="transform-duo">
+            <div class="photo-pane before-pane" data-title="Range &amp; Oven Door (Before)" data-desc="Grease streaks and interior grime">
+              <img src="images/stove-oven-before.jpg" alt="Stove and Oven Before Cleaning" loading="lazy">
+              <span class="status-pill pill-before">BEFORE</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+            </div>
+            
+            <div class="transform-indicator" title="Transformation">
+              <div class="indicator-icon">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+
+            <div class="photo-pane after-pane" data-title="Range &amp; Oven Door (After)" data-desc="Detailed wipe down, spotless finish &amp; clean racks">
+              <img src="images/stove-oven-after.jpg" alt="Stove and Oven After Cleaning" loading="lazy">
+              <span class="status-pill pill-after"><i class="fa-solid fa-wand-magic-sparkles"></i> AFTER</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
             </div>
           </div>
         </div>
 
-        <div class="gallery-item" data-category="before-after kitchens appliances">
-          <div class="gallery-media">
-            <img src="images/oven-deepclean-after.jpg" alt="Oven Interior After Deep Cleaning">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: var(--brand-green);">After</span>
-              <h3>Oven Interior &amp; Glass Door</h3>
-              <p>Completely degreased, spotless glass &amp; polished racks</p>
+        <!-- Transformation 4: Toilet Mineral & Rust Ring -->
+        <div class="gallery-card transform-card" data-category="before-after bathrooms">
+          <div class="card-header-clean">
+            <span class="category-tag-clean"><i class="fa-solid fa-bath"></i> Bathroom</span>
+            <h3 class="card-title-clean">Toilet Mineral &amp; Rust Ring</h3>
+          </div>
+          <div class="transform-duo">
+            <div class="photo-pane before-pane" data-title="Toilet Mineral Ring (Before)" data-desc="Heavy mineral deposit buildup inside bowl">
+              <img src="images/toilet-stain-before.jpg" alt="Toilet Bowl Before Stain Removal" loading="lazy">
+              <span class="status-pill pill-before">BEFORE</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+            </div>
+            
+            <div class="transform-indicator" title="Transformation">
+              <div class="indicator-icon">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+
+            <div class="photo-pane after-pane" data-title="Toilet Mineral Ring (After)" data-desc="Completely restored bright white porcelain">
+              <img src="images/toilet-stain-after.jpg" alt="Toilet Bowl After Stain Removal" loading="lazy">
+              <span class="status-pill pill-after"><i class="fa-solid fa-wand-magic-sparkles"></i> AFTER</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
             </div>
           </div>
         </div>
 
-        <!-- Pair 3: Stove & Oven Door -->
-        <div class="gallery-item" data-category="before-after kitchens appliances">
-          <div class="gallery-media">
-            <img src="images/stove-oven-before.jpg" alt="Stove and Oven Before Cleaning">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: #ef4444;">Before</span>
-              <h3>Range &amp; Oven Door</h3>
-              <p>Grease streaks and interior grime</p>
+        <!-- Transformation 5: Toilet Hard Water Limescale -->
+        <div class="gallery-card transform-card" data-category="before-after bathrooms">
+          <div class="card-header-clean">
+            <span class="category-tag-clean"><i class="fa-solid fa-bath"></i> Bathroom</span>
+            <h3 class="card-title-clean">Severe Hard Water Staining</h3>
+          </div>
+          <div class="transform-duo">
+            <div class="photo-pane before-pane" data-title="Hard Water Staining (Before)" data-desc="Deep dark limescale &amp; hard water deposits">
+              <img src="images/toilet-deepclean-before.jpg" alt="Toilet Bowl Before Deep Clean" loading="lazy">
+              <span class="status-pill pill-before">BEFORE</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+            </div>
+            
+            <div class="transform-indicator" title="Transformation">
+              <div class="indicator-icon">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+
+            <div class="photo-pane after-pane" data-title="Hard Water Staining (After)" data-desc="Cleaned &amp; sanitized back to like-new condition">
+              <img src="images/toilet-deepclean-after.jpg" alt="Toilet Bowl After Deep Clean" loading="lazy">
+              <span class="status-pill pill-after"><i class="fa-solid fa-wand-magic-sparkles"></i> AFTER</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
             </div>
           </div>
         </div>
 
-        <div class="gallery-item" data-category="before-after kitchens appliances">
-          <div class="gallery-media">
-            <img src="images/stove-oven-after.jpg" alt="Stove and Oven After Cleaning">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: var(--brand-green);">After</span>
-              <h3>Range &amp; Oven Door</h3>
-              <p>Detailed wipe down, spotless finish &amp; clean racks</p>
+        <!-- Transformation 6: Commercial Facility Tile Floor -->
+        <div class="gallery-card transform-card" data-category="before-after commercial">
+          <div class="card-header-clean">
+            <span class="category-tag-clean"><i class="fa-solid fa-building"></i> Commercial</span>
+            <h3 class="card-title-clean">Commercial Facility Tile Floor</h3>
+          </div>
+          <div class="transform-duo">
+            <div class="photo-pane before-pane" data-title="Commercial Floor (Before)" data-desc="Debris, lint, trash &amp; dust scattered across tile">
+              <img src="images/commercial-floor-before.jpg" alt="Commercial Laundromat Floor Before" loading="lazy">
+              <span class="status-pill pill-before">BEFORE</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+            </div>
+            
+            <div class="transform-indicator" title="Transformation">
+              <div class="indicator-icon">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+
+            <div class="photo-pane after-pane" data-title="Commercial Floor (After)" data-desc="Swept, scrubbed &amp; mopped to a spotless finish">
+              <img src="images/commercial-floor-after.jpg" alt="Commercial Laundromat Floor After" loading="lazy">
+              <span class="status-pill pill-after"><i class="fa-solid fa-wand-magic-sparkles"></i> AFTER</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
             </div>
           </div>
         </div>
 
-        <!-- Pair 4: Toilet Stain Removal -->
-        <div class="gallery-item" data-category="before-after bathrooms">
-          <div class="gallery-media">
-            <img src="images/toilet-stain-before.jpg" alt="Toilet Bowl Before Stain Removal">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: #ef4444;">Before</span>
-              <h3>Toilet Mineral &amp; Rust Ring</h3>
-              <p>Heavy mineral deposit buildup inside bowl</p>
+        <!-- Transformation 7: High Ceiling Fan Dusting -->
+        <div class="gallery-card transform-card" data-category="before-after commercial appliances">
+          <div class="card-header-clean">
+            <span class="category-tag-clean"><i class="fa-solid fa-fan"></i> Commercial &amp; Detail</span>
+            <h3 class="card-title-clean">High Ceiling Fan Heavy Dusting</h3>
+          </div>
+          <div class="transform-duo">
+            <div class="photo-pane before-pane" data-title="Ceiling Fan (Before)" data-desc="Heavy lint and thick dust on fan blades">
+              <img src="images/ceiling-fan-before.jpg" alt="Ceiling Fan Before Dusting" loading="lazy">
+              <span class="status-pill pill-before">BEFORE</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+            </div>
+            
+            <div class="transform-indicator" title="Transformation">
+              <div class="indicator-icon">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+
+            <div class="photo-pane after-pane" data-title="Ceiling Fan (After)" data-desc="Detailed wipe down on blades, motor &amp; mounts">
+              <img src="images/ceiling-fan-after.jpg" alt="Ceiling Fan After Dusting" loading="lazy">
+              <span class="status-pill pill-after"><i class="fa-solid fa-wand-magic-sparkles"></i> AFTER</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
             </div>
           </div>
         </div>
 
-        <div class="gallery-item" data-category="before-after bathrooms">
-          <div class="gallery-media">
-            <img src="images/toilet-stain-after.jpg" alt="Toilet Bowl After Stain Removal">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: var(--brand-green);">After</span>
-              <h3>Toilet Mineral &amp; Rust Ring</h3>
-              <p>Completely restored bright white porcelain</p>
+        <!-- Transformation 8: Appliance Detergent Dispenser -->
+        <div class="gallery-card transform-card" data-category="before-after appliances">
+          <div class="card-header-clean">
+            <span class="category-tag-clean"><i class="fa-solid fa-soap"></i> Appliance Detail</span>
+            <h3 class="card-title-clean">Appliance Detergent Chamber</h3>
+          </div>
+          <div class="transform-duo">
+            <div class="photo-pane before-pane" data-title="Detergent Chamber (Before)" data-desc="Soap scum, detergent residue &amp; mold buildup">
+              <img src="images/appliance-dispenser-before.jpg" alt="Appliance Dispenser Before Cleaning" loading="lazy">
+              <span class="status-pill pill-before">BEFORE</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+            </div>
+            
+            <div class="transform-indicator" title="Transformation">
+              <div class="indicator-icon">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+
+            <div class="photo-pane after-pane" data-title="Detergent Chamber (After)" data-desc="Sanitized and detailed chamber">
+              <img src="images/appliance-dispenser-after.jpg" alt="Appliance Dispenser After Cleaning" loading="lazy">
+              <span class="status-pill pill-after"><i class="fa-solid fa-wand-magic-sparkles"></i> AFTER</span>
+              <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
             </div>
           </div>
         </div>
 
-        <!-- Pair 5: Toilet Hard Water Clean -->
-        <div class="gallery-item" data-category="before-after bathrooms">
-          <div class="gallery-media">
-            <img src="images/toilet-deepclean-before.jpg" alt="Toilet Bowl Before Deep Clean">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: #ef4444;">Before</span>
-              <h3>Severe Hard Water Staining</h3>
-              <p>Deep dark limescale &amp; hard water deposits</p>
-            </div>
+        <!-- Showcase 1: Clean White Stove -->
+        <div class="gallery-card showcase-card" data-category="kitchens appliances">
+          <div class="card-header-clean">
+            <span class="category-tag-clean"><i class="fa-solid fa-kitchen-set"></i> Kitchen</span>
+            <h3 class="card-title-clean">Clean White Range Top</h3>
+          </div>
+          <div class="showcase-photo-pane" data-title="Clean White Range Top" data-desc="Burners, drip pans &amp; control panel detailed">
+            <img src="images/clean-stove-top.jpg" alt="Clean White Stove Top and Range" loading="lazy">
+            <span class="status-pill pill-showcase"><i class="fa-solid fa-wand-magic-sparkles"></i> SPOTLESS</span>
+            <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
           </div>
         </div>
 
-        <div class="gallery-item" data-category="before-after bathrooms">
-          <div class="gallery-media">
-            <img src="images/toilet-deepclean-after.jpg" alt="Toilet Bowl After Deep Clean">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: var(--brand-green);">After</span>
-              <h3>Severe Hard Water Staining</h3>
-              <p>Cleaned &amp; sanitized back to like-new condition</p>
-            </div>
+        <!-- Showcase 2: Bathroom Double Vanity -->
+        <div class="gallery-card showcase-card" data-category="bathrooms">
+          <div class="card-header-clean">
+            <span class="category-tag-clean"><i class="fa-solid fa-bath"></i> Bathroom</span>
+            <h3 class="card-title-clean">Master Bathroom Vanity &amp; Mirrors</h3>
+          </div>
+          <div class="showcase-photo-pane" data-title="Master Bathroom Vanity &amp; Mirrors" data-desc="Polished countertops, faucets, sinks &amp; mirrors">
+            <img src="images/bathroom-vanity-clean.jpg" alt="Clean Double Bathroom Vanity and Mirrors" loading="lazy">
+            <span class="status-pill pill-showcase"><i class="fa-solid fa-wand-magic-sparkles"></i> SPOTLESS</span>
+            <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
           </div>
         </div>
 
-        <!-- Pair 6: Commercial Laundromat Floor -->
-        <div class="gallery-item" data-category="before-after commercial">
-          <div class="gallery-media">
-            <img src="images/commercial-floor-before.jpg" alt="Commercial Laundromat Floor Before">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: #ef4444;">Before</span>
-              <h3>Commercial Facility Floor</h3>
-              <p>Debris, lint, trash &amp; dust scattered across tile</p>
-            </div>
+        <!-- Showcase 3: Bathtub and Enclosure -->
+        <div class="gallery-card showcase-card" data-category="bathrooms">
+          <div class="card-header-clean">
+            <span class="category-tag-clean"><i class="fa-solid fa-bath"></i> Bathroom</span>
+            <h3 class="card-title-clean">Bathtub &amp; Glass Enclosure</h3>
           </div>
-        </div>
-
-        <div class="gallery-item" data-category="before-after commercial">
-          <div class="gallery-media">
-            <img src="images/commercial-floor-after.jpg" alt="Commercial Laundromat Floor After">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: var(--brand-green);">After</span>
-              <h3>Commercial Facility Floor</h3>
-              <p>Swept, scrubbed &amp; mopped to a spotless finish</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 7: Ceiling Fan Heavy Dusting -->
-        <div class="gallery-item" data-category="before-after commercial appliances">
-          <div class="gallery-media">
-            <img src="images/ceiling-fan-before.jpg" alt="Ceiling Fan Before Dusting">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: #ef4444;">Before</span>
-              <h3>High Ceiling Fan Dusting</h3>
-              <p>Heavy lint and thick dust on fan blades</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-category="before-after commercial appliances">
-          <div class="gallery-media">
-            <img src="images/ceiling-fan-after.jpg" alt="Ceiling Fan After Dusting">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: var(--brand-green);">After</span>
-              <h3>High Ceiling Fan Dusting</h3>
-              <p>Detailed wipe down on blades, motor &amp; mounts</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pair 8: Detergent Dispenser Detail -->
-        <div class="gallery-item" data-category="before-after appliances">
-          <div class="gallery-media">
-            <img src="images/appliance-dispenser-before.jpg" alt="Appliance Dispenser Before Cleaning">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: #ef4444;">Before</span>
-              <h3>Appliance Detergent Dispenser</h3>
-              <p>Soap scum, detergent residue &amp; mold buildup</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-category="before-after appliances">
-          <div class="gallery-media">
-            <img src="images/appliance-dispenser-after.jpg" alt="Appliance Dispenser After Cleaning">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: var(--brand-green);">After</span>
-              <h3>Appliance Detergent Dispenser</h3>
-              <p>Sanitized and detailed chamber</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Showcase 9: Clean White Stove -->
-        <div class="gallery-item" data-category="kitchens appliances">
-          <div class="gallery-media">
-            <img src="images/clean-stove-top.jpg" alt="Clean White Stove Top and Range">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: var(--primary-blue);">Kitchen</span>
-              <h3>Clean White Range Top</h3>
-              <p>Burners, drip pans &amp; control panel detailed</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Showcase 10: Bathroom Double Vanity -->
-        <div class="gallery-item" data-category="bathrooms">
-          <div class="gallery-media">
-            <img src="images/bathroom-vanity-clean.jpg" alt="Clean Double Bathroom Vanity and Mirrors">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: var(--primary-blue);">Bathroom</span>
-              <h3>Master Bathroom Vanity &amp; Mirrors</h3>
-              <p>Polished countertops, faucets, sinks &amp; mirrors</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Showcase 11: Bathtub and Enclosure -->
-        <div class="gallery-item" data-category="bathrooms">
-          <div class="gallery-media">
-            <img src="images/bathtub-shower-clean.jpg" alt="Clean Bathtub and Gold Glass Enclosure">
-            <button class="gallery-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <div class="gallery-overlay">
-              <span class="gallery-tag" style="background-color: var(--primary-blue);">Bathroom</span>
-              <h3>Bathtub &amp; Glass Enclosure</h3>
-              <p>Sanitized tub, tile surround &amp; sliding glass</p>
-            </div>
+          <div class="showcase-photo-pane" data-title="Bathtub &amp; Glass Enclosure" data-desc="Sanitized tub, tile surround &amp; sliding glass">
+            <img src="images/bathtub-shower-clean.jpg" alt="Clean Bathtub and Gold Glass Enclosure" loading="lazy">
+            <span class="status-pill pill-showcase"><i class="fa-solid fa-wand-magic-sparkles"></i> SPOTLESS</span>
+            <button class="pane-zoom-btn" title="Enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
           </div>
         </div>
 
@@ -416,7 +432,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=2.8"></script>
+  <script src="js/main.js?v=2.9"></script>
 </body>
 </html>
 

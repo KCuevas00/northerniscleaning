@@ -99,9 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. Gallery Category Filter
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryCards = document.querySelectorAll('.gallery-card, .gallery-item');
 
-  if (filterBtns.length > 0 && galleryItems.length > 0) {
+  if (filterBtns.length > 0 && galleryCards.length > 0) {
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
@@ -109,10 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const filter = btn.getAttribute('data-filter');
 
-        galleryItems.forEach(item => {
-          const category = item.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            item.style.display = 'block';
+        galleryCards.forEach(item => {
+          const category = item.getAttribute('data-category') || '';
+          if (filter === 'all' || category.includes(filter)) {
+            item.style.display = 'flex';
             setTimeout(() => {
               item.style.opacity = '1';
               item.style.transform = 'translateY(0)';
@@ -137,15 +137,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxClose = document.querySelector('.lightbox-close');
 
   if (lightbox && lightboxImg) {
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const img = item.querySelector('.gallery-media img');
-        const title = item.querySelector('.gallery-overlay h3');
-        const desc = item.querySelector('.gallery-overlay p');
+    document.querySelectorAll('.photo-pane, .showcase-photo-pane, .gallery-item').forEach(pane => {
+      pane.addEventListener('click', () => {
+        const img = pane.querySelector('img');
+        const title = pane.dataset.title || (pane.querySelector('h3') ? pane.querySelector('h3').textContent : 'Transformation Detail');
+        const desc = pane.dataset.desc || (pane.querySelector('p') ? pane.querySelector('p').textContent : '');
 
         if (img) lightboxImg.src = img.src;
-        if (title && lightboxTitle) lightboxTitle.textContent = title.textContent;
-        if (desc && lightboxDesc) lightboxDesc.textContent = desc.textContent;
+        if (title && lightboxTitle) lightboxTitle.textContent = title;
+        if (desc && lightboxDesc) lightboxDesc.textContent = desc;
 
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -414,6 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
       '.page-banner h1',
       '.page-banner p',
       '.gallery-filters',
+      '.gallery-card',
       '.gallery-item',
       '.form-card',
       '.contact-card',

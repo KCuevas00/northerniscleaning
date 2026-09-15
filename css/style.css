@@ -748,7 +748,7 @@ section[id], div[id] {
 
 .service-thumb-wrap {
   position: relative;
-  height: 220px;
+  height: 250px;
   overflow: visible;
 }
 
@@ -798,16 +798,16 @@ section[id], div[id] {
   color: var(--brand-green);
 }
 
-/* Parallax Subimage Floating Card (Bottom Right - Continuous Smooth Upward Motion) */
+/* Parallax Subimage Floating Card (~30% larger, Continuous Smooth Upward Motion) */
 .service-subimage-card {
   position: absolute;
-  bottom: -22px;
+  bottom: -24px;
   right: 18px;
-  width: 148px;
-  height: 110px;
-  border-radius: 16px;
+  width: 192px;
+  height: 142px;
+  border-radius: 18px;
   border: none;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.38);
   z-index: 5;
   -webkit-transform: translate3d(0, var(--subimage-y, 0px), 0);
   transform: translate3d(0, var(--subimage-y, 0px), 0);
@@ -816,14 +816,14 @@ section[id], div[id] {
 }
 
 .service-card:hover .service-subimage-card {
-  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.48);
 }
 
 .subimage-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   background-color: #07223b;
   transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
@@ -1752,12 +1752,12 @@ textarea.form-control {
   box-shadow: 0 4px 14px rgba(7, 34, 59, 0.2);
 }
 
-/* Territory Radar Graphic (DeKalb Center Orbit) */
+/* Territory Radar Graphic (DeKalb Center Orbit with Simulated Regional Map Underlay) */
 .territory-radar-diagram {
   position: relative;
   z-index: 2;
-  background: radial-gradient(circle at center, #ffffff 0%, #f4f8fb 100%);
-  border: 1px solid rgba(0, 102, 178, 0.14);
+  background: radial-gradient(circle at center, #ffffff 0%, #f0f6fa 100%);
+  border: 1px solid rgba(0, 102, 178, 0.16);
   border-radius: var(--radius-xl);
   height: 560px;
   width: 100%;
@@ -1765,7 +1765,26 @@ textarea.form-control {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-shadow: inset 0 2px 8px rgba(0, 48, 80, 0.03);
+  box-shadow: inset 0 2px 12px rgba(0, 48, 80, 0.04);
+}
+
+/* Simulated Vector Map Underlay */
+.radar-map-underlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.92;
+}
+
+.radar-map-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Concentric Radar Distance Rings */
@@ -2539,17 +2558,35 @@ textarea.form-control {
   }
 }
 
-@media (max-width: 480px) {
-  .service-thumb-wrap,
-  .schedule-thumb-wrap {
-    height: 190px;
+@media (max-width: 768px) {
+  .service-thumb-wrap {
+    height: 230px;
   }
 
   .service-subimage-card {
-    width: 120px;
-    height: 90px;
-    bottom: -16px;
+    width: 165px;
+    height: 124px;
+    bottom: -18px;
     right: 14px;
+    border-radius: 14px;
+  }
+
+  .subimage-inner {
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-thumb-wrap,
+  .schedule-thumb-wrap {
+    height: 205px;
+  }
+
+  .service-subimage-card {
+    width: 145px;
+    height: 110px;
+    bottom: -16px;
+    right: 12px;
     border-radius: 12px;
   }
 

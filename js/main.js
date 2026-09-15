@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 2. Transparent-to-Solid Navbar on Scroll
-  const header = document.querySelector('.site-header');
   let ticking = false;
 
   function updateNavbarScroll() {
@@ -317,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const subimageCards = document.querySelectorAll('.service-subimage-card');
 
   if (subimageCards.length > 0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let ticking = false;
+    let parallaxTicking = false;
 
     // Track visible cards via IntersectionObserver for maximum 60/120fps performance
     const visibleCards = new Set();
@@ -329,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
           visibleCards.delete(entry.target);
         }
       });
-      requestUpdate();
+      requestParallaxUpdate();
     }, {
       rootMargin: '120px 0px 120px 0px'
     });
@@ -356,19 +355,19 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.setProperty('--subimage-y', `${translateY.toFixed(1)}px`);
       });
 
-      ticking = false;
+      parallaxTicking = false;
     }
 
-    function requestUpdate() {
-      if (!ticking) {
+    function requestParallaxUpdate() {
+      if (!parallaxTicking) {
         requestAnimationFrame(updateParallax);
-        ticking = true;
+        parallaxTicking = true;
       }
     }
 
-    window.addEventListener('scroll', requestUpdate, { passive: true });
-    window.addEventListener('resize', requestUpdate, { passive: true });
-    requestUpdate();
+    window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
+    window.addEventListener('resize', requestParallaxUpdate, { passive: true });
+    requestParallaxUpdate();
   }
 });
 

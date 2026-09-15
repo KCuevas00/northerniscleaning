@@ -401,6 +401,67 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', requestParallaxUpdate, { passive: true });
     requestParallaxUpdate();
   }
+
+  // 9. Premium Scroll-Triggered Fade-In Text & Content Reveal Animations
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const revealSelectors = [
+      '.section-header',
+      '.service-card',
+      '.editorial-header',
+      '.editorial-card',
+      '.editorial-territory-showcase',
+      '.page-banner h1',
+      '.page-banner p',
+      '.gallery-filters',
+      '.gallery-item',
+      '.form-card',
+      '.contact-card',
+      '.faq-item',
+      '.territory-footer-notice'
+    ];
+
+    const elementsToReveal = document.querySelectorAll(revealSelectors.join(', '));
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.08
+    });
+
+    elementsToReveal.forEach((el) => {
+      // Avoid hiding top navigation or top utility bar
+      if (el.closest('.top-utility-bar') || el.closest('.site-header')) {
+        return;
+      }
+
+      el.classList.add('scroll-reveal');
+
+      // Stagger items within grids
+      const parentGrid = el.closest('.services-grid, .editorial-hours-grid, .gallery-grid, .faq-grid');
+      if (parentGrid) {
+        const siblings = Array.from(parentGrid.children);
+        const index = siblings.indexOf(el);
+        if (index >= 0) {
+          el.classList.add(`stagger-${Math.min((index % 6) + 1, 6)}`);
+        }
+      }
+
+      // If already in viewport on initial load, reveal immediately
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('revealed');
+      } else {
+        revealObserver.observe(el);
+      }
+    });
+  }
 });
+
 
 

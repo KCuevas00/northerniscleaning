@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" width="2048" height="2048">
+  <rect width="2048" height="2048" fill="#ffffff" />
+  
+  <!-- Centered Logo Icon Mark: scaled 3.5x, centered at (1024, 1024) with safe margins -->
+  <g transform="translate(1024, 1024) scale(3.5) translate(-166.5, -117)">
+    <g id="logo-icon-mark" transform="translate(-55, -20)">
+      <!-- Outer Blue Crescent Arch -->
+      <path d="M 90 240 C 45 180 50 85 120 40 C 190 -5 250 25 272 52 C 250 36 185 15 125 58 C 72 95 68 180 105 240 C 100 240 95 240 90 240 Z" 
+            fill="#0088cc" />
+
+      <!-- Inner Green Crescent Curve -->
+      <path d="M 125 145 C 150 92 205 66 270 80 C 215 76 160 98 138 145 Z" 
+            fill="#6ea824" />
+
+      <!-- Sparkle 1 (Large Blue Diamond) -->
+      <path d="M 262 48 Q 262 61 273 61 Q 262 61 262 74 Q 262 61 251 61 Q 262 61 262 48 Z" 
+            fill="#0088cc" />
+
+      <!-- Sparkle 2 (Small Green Diamond) -->
+      <path d="M 238 24 Q 238 32 245 32 Q 238 32 238 40 Q 238 32 231 32 Q 238 32 238 24 Z" 
+            fill="#6ea824" />
+
+      <!-- Bar 1: Short Left Bar (Green) -->
+      <path d="M 230 250 L 230 215 Q 230 200 248 200 Q 266 200 266 215 L 266 250 Z" 
+            fill="#6ea824" />
+
+      <!-- Bar 2: Medium Middle Bar (Green) -->
+      <path d="M 282 250 L 282 165 Q 282 146 303 146 Q 324 146 324 165 L 324 250 Z" 
+            fill="#6ea824" />
+
+      <!-- Bar 3: Tall Right Bar (Blue) -->
+      <path d="M 340 250 L 340 65 Q 340 44 363 44 Q 383 44 383 65 L 383 250 Z" 
+            fill="#0088cc" />
+    </g>
+  </g>
+</svg>

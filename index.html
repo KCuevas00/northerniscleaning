@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2.0">
 </head>
 <body>
 
@@ -62,8 +62,8 @@
   <section class="hero-video-section">
     <!-- Background Video Container -->
     <div class="hero-video-wrap">
-      <video id="heroVideoA" class="hero-video-element active" autoplay muted playsinline src="videos/bathroom-surface-cleaning.mp4"></video>
-      <video id="heroVideoB" class="hero-video-element" muted playsinline></video>
+      <video id="heroVideoA" class="hero-video-element active" autoplay muted playsinline webkit-playsinline preload="auto" src="videos/bathroom-surface-cleaning.mp4"></video>
+      <video id="heroVideoB" class="hero-video-element" muted playsinline webkit-playsinline preload="auto"></video>
       <div class="hero-video-overlay"></div>
     </div>
 
@@ -480,6 +480,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=2.0"></script>
 </body>
 </html>

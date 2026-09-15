@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.site-header');
 
   if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
       mobileToggle.setAttribute('aria-expanded', !isExpanded);
       navLinks.classList.toggle('active');
@@ -246,18 +247,24 @@ document.addEventListener('DOMContentLoaded', () => {
     let cycleTimer = null;
     const clipDuration = 5500; // 5.5 seconds per clip before cross-fading
 
+    videoA.muted = true;
+    videoA.playsInline = true;
+    videoB.muted = true;
+    videoB.playsInline = true;
+
     function playVideo(video) {
+      if (!video) return;
+      video.muted = true;
+      video.playsInline = true;
       const p = video.play();
       if (p !== undefined) {
         p.catch(() => {
           // Autoplay unlock on first user click or touch
           const unlockAutoplay = () => {
-            activePlayer.play();
-            document.removeEventListener('touchstart', unlockAutoplay);
-            document.removeEventListener('click', unlockAutoplay);
+            activePlayer.play().catch(() => {});
           };
-          document.addEventListener('touchstart', unlockAutoplay, { once: true });
-          document.addEventListener('click', unlockAutoplay, { once: true });
+          document.addEventListener('touchstart', unlockAutoplay, { once: true, passive: true });
+          document.addEventListener('click', unlockAutoplay, { once: true, passive: true });
         });
       }
     }
@@ -274,10 +281,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       idlePlayer.src = nextSrc;
       idlePlayer.currentTime = 0;
+      idlePlayer.muted = true;
+      idlePlayer.playsInline = true;
       idlePlayer.load();
 
-      const onPlaying = () => {
-        idlePlayer.removeEventListener('playing', onPlaying);
+      let transitionDone = false;
+      let safetyTimer = null;
+
+      const performCrossfade = () => {
+        if (transitionDone) return;
+        transitionDone = true;
+        if (safetyTimer) clearTimeout(safetyTimer);
+
+        idlePlayer.removeEventListener('playing', performCrossfade);
 
         // Idle player is actively rendering frames - trigger smooth 1.2s cross-dissolve
         idlePlayer.classList.add('active');
@@ -292,13 +308,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1250);
       };
 
-      idlePlayer.addEventListener('playing', onPlaying, { once: true });
+      idlePlayer.addEventListener('playing', performCrossfade, { once: true });
+
+      // Safety timeout for mobile browsers (e.g. iOS) in case 'playing' event is throttled
+      safetyTimer = setTimeout(() => {
+        if (!transitionDone) {
+          performCrossfade();
+        }
+      }, 1500);
 
       const p = idlePlayer.play();
       if (p !== undefined) {
         p.catch(err => {
           console.warn('Video transition playback error, retrying:', err);
           isTransitioning = false;
+          if (safetyTimer) clearTimeout(safetyTimer);
           setTimeout(nextVideo, 1000);
         });
       }
